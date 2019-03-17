@@ -2,6 +2,8 @@
 #include "Station.h"
 
 
+Point::Point() = default;;
+
 Point::Point(int x, int y)
 {
     this->x = x;

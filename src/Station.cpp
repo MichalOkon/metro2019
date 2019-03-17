@@ -13,10 +13,10 @@ Station::Station(int name, int people, Point point)
 
 Station::Station(int name, int people, int x, int y)
 {
-    this.name = name;
-    this.people = people;
-    this.point.setX( x )
-    this.point.setY( y );
+    this->name = name;
+    this->people = people;
+    this->point.setX( x );
+    this->point.setY( y );
 }
 
 void Station::setName(int newName)
@@ -41,14 +41,14 @@ int Station::getPeople()
 
 void Station::setPoint(Point newPoint)
 {
-    this.point.setX( newPoint.getX() );
-    this.point.setY( newPoint.getY() );
+    this->point.setX( newPoint.getX() );
+    this->point.setY( newPoint.getY() );
 }
 
 void Station::setPoint(int newX, int newY)
 {
-    this.point.setX( newX );
-    this.point.setY( newY );
+    this->point.setX( newX );
+    this->point.setY( newY );
 }
 
 Point Station::getPoint()
