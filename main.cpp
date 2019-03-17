@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-
-#include "stretch.cpp"
+#include "include/Station.h"
+//#include "stretch.cpp"
 
 using namespace std;
 
@@ -61,14 +61,14 @@ int main()
 //    vector <Station> stations;
 //    vector <vector<pair<int,int> > > graph;
 
-  //////////////////////////////  int stretch_amount = get_stretch_amount();
-  int stretch_amount = 5;
+    //////////////////////////////  int stretch_amount = get_stretch_amount();
+    int stretch_amount = 5;
     for(int i=0; i<stretch_amount; i++)
     {
-  //      int a = get_from();
-  //      int b = get_to();
-  //      int c = get_pass();
-    int a,b,c; cin >> a >> b >> c;
+        //      int a = get_from();
+        //      int b = get_to();
+        //      int c = get_pass();
+        int a,b,c; cin >> a >> b >> c;
         graph[a].push_back(make_pair(b,c));
         graph[b].push_back(make_pair(a,c));
     }

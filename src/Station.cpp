@@ -39,7 +39,7 @@ int Station::getPeople()
     return people;
 }
 
-void Station::setPoint(int newPoint)
+void Station::setPoint(Point newPoint)
 {
     this.point.setX( newPoint.getX() );
     this.point.setY( newPoint.getY() );
