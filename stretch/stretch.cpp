@@ -40,9 +40,12 @@ void Setfrom(station val)
 {
     m_from = val;
 }
-station Getto()
+station Getto(int fromm)
 {
-    return m_to;
+    if(m_from.mName == fromm)
+        return m_to;
+    else if(m_to.mName == fromm)
+        return m_from;
 }
 void Setto(station val)
 {
