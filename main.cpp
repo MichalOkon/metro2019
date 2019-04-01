@@ -63,7 +63,7 @@ inline void init()
 
 inline void clear_all()
 {
-	for(int i=graph.size()-1; i>=0; --i)
+	for(int i=0; i<graph[i].size(); ++i)
 		graph[i].clear();
 	graph.clear();
 	stations.clear();
@@ -72,6 +72,7 @@ inline void clear_all()
 int main()
 {
 	init();
+	vector <stretch*> connections;
 	int stretch_amount;
 	cin >> stretch_amount;
 	for(int i=0; i<stretch_amount; i++)
@@ -80,7 +81,7 @@ int main()
 		stretch * str = new stretch(i,c,stations[a],stations[b]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
 		graph[a].push_back(str);
 		graph[b].push_back(str);
-		delete str;
+		connections.push_back(str);
 	}
 	int days;
 	cin >> days;
@@ -100,6 +101,8 @@ int main()
 		cout << endl;
 	}
 
+	for(int i=0; i<connections.size(); ++i)
+		delete connections[i];
 	clear_all();
 	return 0;
 }
