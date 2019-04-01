@@ -61,6 +61,14 @@ inline void init()
 	}
 }
 
+inline void clear_all()
+{
+	for(int i=graph.size()-1; i>=0; --i)
+		graph[i].clear();
+	graph.clear();
+	stations.clear();
+}
+
 int main()
 {
 	init();
@@ -72,6 +80,7 @@ int main()
 		stretch * str = new stretch(i,c,stations[a],stations[b]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
 		graph[a].push_back(str);
 		graph[b].push_back(str);
+		delete str;
 	}
 	int days;
 	cin >> days;
@@ -91,5 +100,6 @@ int main()
 		cout << endl;
 	}
 
+	clear_all();
 	return 0;
 }
