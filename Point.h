@@ -5,28 +5,26 @@
 class Point
 
 {
-    private:
-        int mX;
-        int mY;
-        int mStationIndex;
+	private:
+		int mX;
+		int mY;
+		int mStationIndex;
 
-    public:
-        Point(int x, int y, int stationIndex);
-        Point();
+	public:
+		Point(int x, int y, int stationIndex);
+		Point();
 
-        void setX(int newX);
-        int getX();
+		void setX(int newX);
+		int getX();
 
-        void setY(int newY);
-        int getY();
+		void setY(int newY);
+		int getY();
 
         // void setStationIndex(int stationIndex);
-        int getStationIndex();
+		int getStationIndex();
 
-    protected:
-
+	protected:
 };
 
 #endif // POINT_H
-
 
