@@ -2,6 +2,8 @@
 #define POINT_H
 //#include "Point.cpp"
 
+#include <ostream>
+
 class Point
 {
     public:
@@ -13,6 +15,8 @@ class Point
 
         void setY(int newY);
         int getY();
+
+    friend std::ostream &operator<<(std::ostream &os, const Point &point);
 
     protected:
 

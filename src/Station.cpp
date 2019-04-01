@@ -3,12 +3,12 @@
 
 
 
-Station::Station(int name, int people, Point point)
+Station::Station(int name, int people, Point *point)
 {
     this->name = name;
     this->people = people;
-    this->point.setX( point.getX() );
-    this->point.setY( point.getY() );
+    this->point.setX( point->getX() );
+    this->point.setY( point->getY() );
 }
 
 Station::Station(int name, int people, int x, int y)
@@ -54,4 +54,11 @@ void Station::setPoint(int newX, int newY)
 Point Station::getPoint()
 {
     return point;
+}
+
+
+
+std::ostream& operator<<(std::ostream& os, const Station& station) {
+    os << "name: " << station.name << " people: " << station.people << " point: " << station.point;
+    return os;
 }

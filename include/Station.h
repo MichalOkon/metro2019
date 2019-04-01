@@ -1,13 +1,14 @@
 #ifndef STATION_H
 #define STATION_H
 
+#include <ostream>
 #include "Point.h"
 
 
 class Station
 {
     public:
-        Station(int name, int people, Point point);
+        Station(int name, int people, Point *point);
         Station(int name, int people, int newX, int newY);
 
         void setName(int newName);
@@ -20,7 +21,10 @@ class Station
         void setPoint(int newX, int newY);
         Point getPoint();
 
-    protected:
+    friend std::ostream &operator<<(std::ostream &os, const Station &station);
+//     std::ostream &operator<<(std::ostream &os, const Station &station);
+
+protected:
 
     private:
     int name;

@@ -56,9 +56,15 @@ using namespace std;
 //    }
 //}
 
+
+
 int main()
 {
-
+//    Point *p = new Point(1, 1);
+//    Station *s = new Station(30, 10, p);
+//    cout << *s <<endl;
+//    s->setPeople(100);
+//    cout << *s <<endl;
 
 //    vector <Station> stations;
 //    vector <vector<pair<int,int> > > graph;
