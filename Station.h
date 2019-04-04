@@ -1,7 +1,7 @@
 #ifndef STATION_H
 #define STATION_H
 
-#include "Point.h"
+#include "Point.cpp"
 
 class Station
 {
@@ -26,6 +26,8 @@ class Station
         void setPoint(Point newPoint);
         void setPoint(int newX, int newY);
         Point getPoint();
+
+        Station operator<<(Station &obj);
 
     protected:
 };

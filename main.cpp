@@ -2,9 +2,14 @@
 #include <vector>
 
 #include "stretch.cpp"
-#include "Area.cpp"
+//#include "Area.cpp"
 
 using namespace std;
+
+Station Station::operator<<(Station &obj)
+{
+	
+}
 
 vector <vector< stretch* > > graph;
 vector <Station> stations; //przechowuje kazda stacje (ilosc ludzi, wspolrzedne itp.)
