@@ -1,15 +1,15 @@
 #include <iostream>
 #include <vector>
 
-#include "stretch.cpp"
+#include "stretch.h"
 //#include "Area.cpp"
 
 using namespace std;
 
-Station Station::operator<<(Station &obj)
-{
+//Station Station::operator<<(Station &obj)
+//{
 	
-}
+//}
 
 vector <vector< stretch* > > graph;
 vector <Station> stations; //przechowuje kazda stacje (ilosc ludzi, wspolrzedne itp.)
@@ -43,6 +43,9 @@ void to_one_point(int dest) //dest -> swiatynia
 int get_max_id() //ile jest wszystkich stacji
 {
 	int a;
+
+	cout<<"Wprowadz liczbe stacji"<<endl;
+
 	cin >> a;
 	return a;
 }
@@ -57,6 +60,8 @@ inline void init()
 	for(int i=0; i<station_amount; i++)
 	{
 		int a,b,c,d;
+
+		cout<< "Podaj id, liczbe ludzi i lokalizacje stacji"<<endl;
 		cin >> a >> b >> c >> d;
 		Point newPoint(c,d,i+1); //nowy punkt dla stacji
 		Station newStation(a,b,newPoint); //nowa stacja
@@ -79,9 +84,12 @@ int main()
 	init();
 	vector <stretch*> connections;
 	int stretch_amount;
+	cout<<"Podaj liczbe polaczen miedzy stacjami"<<endl;
 	cin >> stretch_amount;
 	for(int i=0; i<stretch_amount; i++)
 	{
+
+        cout << "Podaj numery polaczonych stacji i przepustowosc danego odcinka"<<endl;
 		int a,b,c; cin >> a >> b >> c;
 		stretch * str = new stretch(i,c,stations[a],stations[b]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
 		graph[a].push_back(str);
@@ -89,10 +97,11 @@ int main()
 		connections.push_back(str);
 	}
 	int days;
+	cout<<"Podaj ilosc dni jaka chcesz symulowac"<<endl;
 	cin >> days;
 
 	cout << "day 0" << endl;
-	for(int i=0; i<stations.size(); i++)
+	for(int i=1; i<stations.size(); i++)
 		cout << stations[i].mName << " " << stations[i].mPeople << endl;
 
 	for(int j=0; j<days; j++)

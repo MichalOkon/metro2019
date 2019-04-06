@@ -4,7 +4,7 @@ stretch::stretch()
 {
 }
 
-strech::stretch(int id, int pass; station from; station to)
+stretch::stretch(int id, int pass, Station from, Station to)
 {
     m_id = id;
     m_pass = pass;
@@ -16,38 +16,45 @@ stretch::~stretch()
 {
 }
 
-int Getid()
+int stretch::Getid()
 {
     return m_id;
 }
-void Setid(int val)
+
+void stretch::Setid(int val)
 {
     m_id = val;
 }
-int Getpass()
+
+int stretch::Getpass()
 {
     return m_pass;
 }
-void Setpass(int val)
+
+void stretch::Setpass(int val)
 {
     m_pass = val;
 }
-station Getfrom()
+
+Station stretch::Getfrom()
 {
     return m_from;
 }
-void Setfrom(station val)
+
+void stretch::Setfrom(Station val)
 {
     m_from = val;
 }
-station Getto(int fromm)
+
+Station stretch::Getto(int fromm)
 {
     if(m_from.mName == fromm)
         return m_to;
     else if(m_to.mName == fromm)
         return m_from;
 }
-void Setto(station val)
+
+void stretch::Setto(Station val)
 {
     m_to = val;
 }

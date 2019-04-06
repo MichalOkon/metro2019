@@ -1,9 +1,9 @@
+#ifndef AREA_H
+#define AREA_H
 #include <iostream>
 #include <vector>
 #include <fstream>
-#ifndef AREA_H
-#define AREA_H
-#include "Point.cpp"
+#include "Point.h"
 class Area {
     private:
 
