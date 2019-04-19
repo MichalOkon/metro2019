@@ -47,14 +47,14 @@ Area::~Area() {
 // it's just pseudo - random numbers <200, 1200)
 std::vector<int> Area::GeneratePopulation(int lenOfDistricts)
 {
-    std::vector<int> population;
-    population.assign(100, 0); // sets the value of the vector to 0s
+    //std::vector<int> population;
+    mPopulation.assign(100, 0); // sets the value of the vector to 0s
     for (int i = 0; i < lenOfDistricts; i++) {
-        population[i] = rand() % 1000 + 200;
+        mPopulation[i] = rand() % 1000 + 200;
     }
 
 
-    return population;
+    return mPopulation;
 }
 
 // simply returns the member population

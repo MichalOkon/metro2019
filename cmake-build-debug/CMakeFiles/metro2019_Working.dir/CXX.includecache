@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/metro/metro2019-Working/Area.h
+iostream
+-
+vector
+-
+fstream
+-
+Point.h
+D:/metro/metro2019-Working/Point.h
+
+D:/metro/metro2019-Working/Point.h
+
+D:/metro/metro2019-Working/Station.h
+Point.h
+D:/metro/metro2019-Working/Point.h
+
+D:/metro/metro2019-Working/graph.h
+vector
+-
+stretch.h
+D:/metro/metro2019-Working/stretch.h
+
+D:/metro/metro2019-Working/main.cpp
+iostream
+-
+Area.h
+D:/metro/metro2019-Working/Area.h
+graph.h
+D:/metro/metro2019-Working/graph.h
+
+D:/metro/metro2019-Working/stretch.h
+Station.h
+D:/metro/metro2019-Working/Station.h
+
