@@ -5,8 +5,6 @@
 
 using namespace std;
 
-using namespace std;
-
 int tests(Graph city){
 
     auto stations = city.get_stations();
