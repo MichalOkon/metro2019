@@ -18,6 +18,7 @@ public:
     void setFrom(Station val);
     Station getTo(int fromm = 0);
     void setTo(Station val);
+    int getTime(); // float ???????
 
 protected:
 
@@ -25,6 +26,7 @@ private:
     int mId;
     //maximum number of passengers transported at the same time
     int mPass; //przepustowosc
+    int mTime; //czas podrozy -> int czy float??????
     Station mFrom;
     Station mTo;
 };

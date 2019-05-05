@@ -1,7 +1,8 @@
 #include <iostream>
 #include <cstdlib>
-#include "Area.cpp"
-#include "Graph.cpp"
+#include <iomanip>
+#include "Area.h"
+#include "Graph.h"
 
 using namespace std;
 
@@ -33,7 +34,6 @@ int stationsInfoTest(Graph city) {
 
     return 0;
 }
-
 
 // TODO: What's the aim?
 int commonAimTest(Graph city);
@@ -70,8 +70,8 @@ int peoplePlacementTest() {
     
     cout << "ROZMIESZCZENIE LUDZI: " << endl;
     Area map;
-    map.generatePopulation(5);
-    map.printPopulation();
+//    map.generatePopulation(5);
+//    map.printPopulation();
 
 }
 
@@ -83,8 +83,8 @@ int peopleSaveTest() {
 
     ofstream toFile;
     toFile.open("testSave.txt");
-    map.savePopulation(&toFile);
-
+//    map.savePopulation(&toFile);
+    toFile.close();
     return 0;
 }
 
@@ -96,10 +96,10 @@ int peopleRestoreTest() {
 
     ifstream fromFile;
     fromFile.open("test2.txt");
-    map.restorePopulation(&fromFile, 100);
+//    map.restorePopulation(&fromFile, 100);
 
-    map.printPopulation();
-
+//    map.printPopulation();
+    fromFile.close();
 }
 
 // int tests(Graph city){
@@ -192,19 +192,47 @@ int peopleRestoreTest() {
 
 int main()
 {
+   // return 0;
+    Graph city(10);
+
+/*    for(int i=0; i<3; ++i)
+    {
+        for(int j=0; j<3; ++j)
+            cout << setw(3) << (*city.getArea()) [Point(j,i)]; // Point (j,i) -> celowo
+        cout << endl;
+    }
+*/
 
     cout << "Hello, world" << endl;
-    Graph city;
-    cout << "Gimme stations amount: " << endl;
+   // Graph city;
 
+    cout << "Gimme stations amount: " << endl;
     int n;
     cin >> n;
 
-    for (int i = 0; i < n; i++) {
-        city.addStretch();
-    }
+//return 0;
+    for(int i=0; i < n; i++)
+        city.addStation();
 
-    stretchesInfoTest(city);
+    city.populationToStation();
+
+//return 0;
+    city.show();
+//return 0;
+    cout << "Gimme stretches amount: " << endl;
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
+        city.addStretch();
+
+//return 0;
+    for(int i=0; i<20; ++i)
+    {
+        city.action();
+        cout << endl;
+    }
+    
+//    stretchesInfoTest(city);
 
     // NIEAKTUALNA WERSJA MAIN // 
 

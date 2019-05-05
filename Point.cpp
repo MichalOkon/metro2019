@@ -2,16 +2,14 @@
 #include "Point.h"
 
 // Constructors
-Point::Point(int x, int y, int stationIndex) {
+Point::Point(int x, int y) {
 	mX = x;
 	mY = y;
-	mStationIndex = stationIndex;
 }
 
 Point::Point() {
 	mX = -1;
 	mY = -1;
-	mStationIndex = -1;
 }
 
 

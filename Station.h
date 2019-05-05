@@ -1,24 +1,32 @@
 #ifndef STATION_H
 #define STATION_H
 
+#include <string>
+#include <vector>
+
 #include "Point.h"
+
+using namespace std;
 
 class Station
 {
     private:
-
-    public:
-        int mName;
+        int mID;
         int mPeople;
         Point mPoint;
+        char mName;
+        vector <int> peopleToStation;
 
-
+    public:
         Station();
-        Station(int name, int people, Point point);//());
-        Station(int name, int people, int newX, int newY);
+        Station(int ID, char name, int people, Point point);
+        Station(int ID, char name, int people, int newX, int newY);
+        ~Station();
 
-        void setName(int newName);
-        int getName();
+        int getID();
+
+        void setName(char newName);
+        char getName();
 
         void setPeople(int newPeople);
         int getPeople();
@@ -27,7 +35,14 @@ class Station
         void setPoint(int newX, int newY);
         Point getPoint();
 
-        Station operator<<(Station &obj);
+        void setPeopleToStation( vector<float>* );
+        int getPeopleToStation(int);
+        void modifyPeopleToStation(int, int);
+        void updatePeople();
+
+        void operator+=(int);
+        void operator-=(int);
+        int &operator[](int);
 
     protected:
 };

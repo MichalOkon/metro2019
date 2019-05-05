@@ -8,10 +8,9 @@ class Point
 	private:
 		int mX;
 		int mY;
-		int mStationIndex;
 
 	public:
-		Point(int x, int y, int stationIndex);
+		Point(int x, int y);
 		Point();
 
 		void setX(int newX);
@@ -21,7 +20,7 @@ class Point
 		int getY();
 
         // void setStationIndex(int stationIndex);
-		int getStationIndex();
+		//int getStationIndex();
 
 	protected:
 };
