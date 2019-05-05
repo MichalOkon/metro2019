@@ -2,26 +2,26 @@
 #include <iostream>
 #include <ctime>
 #include "Area.h"
-#include "Point.h"
+
 
 
 using namespace std;
 
 // Point[] wszedzie gdzie masz
 
-Point* Area::GetCity() {
+Point* Area::getCity() {
     return mCity;
 }
 
-void Area::SetCity(Point * city) {
+void Area::setCity(Point * city) {
     mCity = city;
 }
 
-int Area::GetTemple() {
+int Area::getTemple() {
     return mTemple;
 }
 
-void Area::SetTemple(int temple) {
+void Area::setTemple(int temple) {
     mTemple = temple;
 }
 
@@ -45,7 +45,7 @@ Area::~Area() {
 
 // generates the population
 // it's just pseudo - random numbers <200, 1200)
-std::vector<int> Area::GeneratePopulation(int lenOfDistricts)
+std::vector<int> Area::generatePopulation(int lenOfDistricts)
 {
     //std::vector<int> population;
     mPopulation.assign(100, 0); // sets the value of the vector to 0s
@@ -58,22 +58,22 @@ std::vector<int> Area::GeneratePopulation(int lenOfDistricts)
 }
 
 // simply returns the member population
-std::vector<int> Area::GetPopulation()
+std::vector<int> Area::getPopulation()
 {
     return mPopulation;
 }
 
 // a setter for population
-void Area::SetPopulation(std::vector<int> population)
+void Area::setPopulation(std::vector<int> population)
 {
     mPopulation = population;
 }
 
 // writes population to the file
 // saves it in the file
-void Area::SavePopulation(ofstream* toFile)
+void Area::savePopulation(ofstream* toFile)
 {
-    std::vector<int> temp = this->GetPopulation();
+    std::vector<int> temp = this->getPopulation();
     for (int i = 0; i < temp.size(); i++) {
         *toFile << temp[i] << "\n";
     }
@@ -82,7 +82,7 @@ void Area::SavePopulation(ofstream* toFile)
 
 // extract from file
 // and restores the population
-void Area::RestorePopulation(ifstream* fromFile, int elToRead)
+void Area::restorePopulation(ifstream* fromFile, int elToRead)
 {
     std::vector<int> temp;
     temp.assign(100, 0);  // wypełnia zerami
@@ -90,7 +90,7 @@ void Area::RestorePopulation(ifstream* fromFile, int elToRead)
         *fromFile >> temp.at(i);
     }
 
-    this->SetPopulation(temp);
+    this->setPopulation(temp);
 }
 
 void Area::printPopulation() {
@@ -99,6 +99,8 @@ void Area::printPopulation() {
     }
 }
 
+
+// TODO: match points in area with population on each district
 
 
 

@@ -15,10 +15,10 @@ class Area {
     public:
 
         // Getters and Setters
-        Point* GetCity();
-        void SetCity(Point * city);
-        int GetTemple();
-        void SetTemple(int temple);
+        Point* getCity();
+        void setCity(Point * city);
+        int getTemple();
+        void setTemple(int temple);
 
         // Finally useful methods
         //void Day();
@@ -31,11 +31,11 @@ class Area {
 
         void printPopulation();
 
-        std::vector<int> GeneratePopulation(int lenOfDistricts);
-        std::vector<int> GetPopulation();
-        void SetPopulation(std::vector<int> population);
-        void SavePopulation(std::ofstream* toFile); // write to file
-        void RestorePopulation(std::ifstream* fromFile, int elToRead); // extract from file
+        std::vector<int> generatePopulation(int lenOfDistricts);
+        std::vector<int> getPopulation();
+        void setPopulation(std::vector<int> population);
+        void savePopulation(std::ofstream* toFile); // write to file
+        void restorePopulation(std::ifstream* fromFile, int elToRead); // extract from file
 
 };
 
