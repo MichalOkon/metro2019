@@ -38,7 +38,7 @@ class Area {
 
         void generatePopulation();
         void populationToStation( vector <Station*> );
-        int &operator[](Point);
+        int &operator[](Point); //zwraca mPopulation[point.X][point.Y]
 
 //        void printPopulation();
 

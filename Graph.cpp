@@ -12,7 +12,7 @@ using namespace std;
 
 
 /////////////////////////////////  constructors
-Graph::Graph(int s)
+Graph::Graph(int s) //generuje Area o rozmiarze s X s
 {
     city = new Area(s);
     //city->generatePopulation();
@@ -97,7 +97,7 @@ void Graph::addStretch() //wczytuje parametry wewnatrz
 {
     int from, to, howMany;
     cout << "Podaj skad, dokad i jaka przepustowosc" << endl;
-    cin >> from >> to >> howMany;
+    cin >> from >> to >> howMany; ///////////////na razie from i to sa wartosciami mID; TODO: przejscie mName -> mID
 	Stretch * str = new Stretch(mStretchesAmount++, howMany, *stations[from], *stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
 	graph[from].push_back(str);
 	graph[to].push_back(str);
@@ -147,7 +147,7 @@ void Graph::DFS2(bool* was, int* dist, int parent, int u, int dest)
 		if(graph[u][i]->getTo(u).getID() == parent || was[ graph[u][i]->getTo(u).getID() ] ) //zeby sie nie cofac
 			continue;
 
-        if(dist[u] + graph[u][i]->getTime() == dist[ graph[u][i]->getTo(u).getID() ])
+        if(dist[u] + graph[u][i]->getTime() == dist[ graph[u][i]->getTo(u).getID() ]) //jesli odleglosc bylaby wieksza niz ta wyliczona z Dijkstry to nie ma co sprawdzac
         {
     		if(stations[graph[u][i]->getTo(u).getID()]->getPeopleToStation(dest) - graph[u][i]->getPass() >= 0)
 	    	{//jest na stacji jest wiecej ludzi niz przepustowosc
@@ -164,7 +164,7 @@ void Graph::DFS2(bool* was, int* dist, int parent, int u, int dest)
     }
 }
 
-int* Graph::Dijkstra(int statio)
+int* Graph::Dijkstra(int statio) //na wikipedii jest dobre wytlumaczenie
 {
     int* dist = new int[mStationsAmount];
     for(int i=0; i < mStationsAmount; ++i)
@@ -174,8 +174,8 @@ int* Graph::Dijkstra(int statio)
     Q.push(make_pair(0,statio));
     while(!Q.empty())
     {
-        int currentDistance = Q.top().first * (-1);
-        int s = Q.top().second;
+        int currentDistance = Q.top().first * (-1); //wszystko razy -1, zeby kolejnosc w priority queue byla dobra
+        int s = Q.top().second; //biezemy stacje, ktora jest najblizej poczatku i z niej wychodzimy we wszystkie kierunki
         Q.pop();
         if(dist[s] == INF)
             dist[s] = currentDistance;
@@ -190,23 +190,23 @@ int* Graph::Dijkstra(int statio)
 }
 
 /////////////////////////////////// skuteczne
-void Graph::action()
+void Graph::action() //jedno przejscie w grafie, ktory moze byc cyklicznys
 {
     for(int i=0; i<mStationsAmount; ++i)
     {
         //return;
-        int* dist = this->Dijkstra(i);
-        bool* was = new bool[mStationsAmount];
+        int* dist = this->Dijkstra(i); //dlugosc najkrotszej drogi na grafie wazonym
+        bool* was = new bool[mStationsAmount]; //czy dana stacja juz byla
         for(int i=0; i<mStationsAmount; ++i)
             was[i] = false;
         //return;
-        DFS2(was, dist, i, i, i);
+        DFS2(was, dist, i, i, i); //specjalny DFS
         
         //return;
         delete[] dist;
         delete[] was;
     }
-    for(int i=0; i<mStationsAmount; ++i)
+    for(int i=0; i<mStationsAmount; ++i) //aktualizuje mPeople dla kazdej stacji na podstawie mPeopleToStation
         stations[i]->updatePeople();
 
     this->show();
@@ -214,15 +214,16 @@ void Graph::action()
 
 void Graph::populationToStation()
 {
-    city->populationToStation( this->stations );
+    city->populationToStation( this->stations ); //dla kazdej stacji mowi ile ludzi na niej jest (na podst mapy z Area)
     int sum = city->getSumOfPeople();
-    vector <float> ratio;
+
+    vector <float> ratio; //przechowuje ulamki ile % ludzi chce dotrzec do stacji 'i' -> ratio[i]
     for(int i=0; i<stations.size(); ++i)
     {
         ratio.push_back( ((float)stations[i]->getPeople() / sum) ); ////// TODO: opracowac lepszy podzial ludzi
     }
     for(int i=0; i<stations.size(); ++i)
-        stations[i]->setPeopleToStation( &ratio );
+        stations[i]->setPeopleToStation( &ratio ); //daje tablice ulamkow do metody, ona tam mnozy razy ilosc ludzi i zapisuje w station
 }
 
 void Graph::toOnePoint(int dest) //dest -> swiatynia

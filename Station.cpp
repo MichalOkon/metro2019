@@ -9,7 +9,7 @@ Station::Station()
 
 }
 
-Station::Station(int id, char name, int people, Point point)//())
+Station::Station(int id, char name, int people, Point point)
 {
     mID = id;
     mName = name;
@@ -100,7 +100,7 @@ int &Station::operator[](int id)
     return peopleToStation[id];
 }
 
-void Station::modifyPeopleToStation(int id, int val)
+void Station::modifyPeopleToStation(int id, int val) //zmienie mPeopleToStation[id] o val
 {
     peopleToStation[id] += val;
 }

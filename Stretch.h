@@ -8,7 +8,7 @@ class Stretch
 public:
     Stretch();
     Stretch(int id, int pass, Station from, Station to); //nazwa, przepustowosc i skad dokad
-    virtual ~Stretch();
+    ~Stretch();
 
     int getId();
     void setId(int val);
@@ -18,7 +18,7 @@ public:
     void setFrom(Station val);
     Station getTo(int fromm = 0);
     void setTo(Station val);
-    int getTime(); // float ???????
+    int getTime(); // float ??????? 
 
 protected:
 
@@ -26,7 +26,7 @@ private:
     int mId;
     //maximum number of passengers transported at the same time
     int mPass; //przepustowosc
-    int mTime; //czas podrozy -> int czy float??????
+    int mTime; //czas podrozy -> odleglosc miedzy stacja mFrom i mTo; int czy float??????
     Station mFrom;
     Station mTo;
 };

@@ -15,7 +15,7 @@ class Station
         int mPeople;
         Point mPoint;
         char mName;
-        vector <int> peopleToStation;
+        vector <int> peopleToStation; //peopleToStation[i] zwraca ile ludzi chce z tej stacji do stacji 'i'
 
     public:
         Station();
@@ -40,9 +40,9 @@ class Station
         void modifyPeopleToStation(int, int);
         void updatePeople();
 
-        void operator+=(int);
-        void operator-=(int);
-        int &operator[](int);
+        void operator+=(int); //zwieksza mPeople o int
+        void operator-=(int); //zmniejsza mPeople o int
+        int &operator[](int); //zwraca peopleToStation[ int ]
 
     protected:
 };
