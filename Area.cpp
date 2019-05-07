@@ -61,7 +61,11 @@ Area::Area(int size)
     mSize = size;
     mPopulation = new int*[size];
     for(int i=0; i<size; ++i)
+    {
         mPopulation[i] = new int[size];
+        for(int j=0; j<size; ++j)
+            mPopulation[i][j]=0;
+    }
     this->generatePopulation();
 }
 
