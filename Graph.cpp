@@ -117,23 +117,23 @@ void Graph::DFS(int parent, int u)
 {
 	for(unsigned int i=0; i<graph[u].size(); i++)
 	{
-		if(graph[u][i]->getTo(u).getID() == parent) //zeby sie nie cofac
+		if(graph[u][i]->getToorFrom(u).getID() == parent) //zeby sie nie cofac
 			continue;
 
-		if(stations[graph[u][i]->getTo(u).getID()]->getPeople() - graph[u][i]->getPass() >= 0)
+		if(stations[graph[u][i]->getToorFrom(u).getID()]->getPeople() - graph[u][i]->getPass() >= 0)
 		{//jest na stacji jest wiecej ludzi niz przepustowosc
 			int help = stations[u]->getPeople() + graph[u][i]->getPass();
             stations[u]->setPeople(help);
-            help = stations[graph[u][i]->getTo(u).getID()]->getPeople() - graph[u][i]->getPass();
-			stations[graph[u][i]->getTo(u).getID()]->setPeople(help);
+            help = stations[graph[u][i]->getToorFrom(u).getID()]->getPeople() - graph[u][i]->getPass();
+			stations[graph[u][i]->getToorFrom(u).getID()]->setPeople(help);
 		}
 		else
 		{//jesli jest mniej niz przepustowosc
-            int help = stations[u]->getPeople() + stations[graph[u][i]->getTo(u).getID()]->getPeople();
+            int help = stations[u]->getPeople() + stations[graph[u][i]->getToorFrom(u).getID()]->getPeople();
             stations[u]->setPeople(help);
-			stations[graph[u][i]->getTo(u).getID()]->setPeople(0);
+			stations[graph[u][i]->getToorFrom(u).getID()]->setPeople(0);
 		}
-		DFS(u, graph[u][i]->getTo(u).getID());//schodzimy nizej
+		DFS(u, graph[u][i]->getToorFrom(u).getID());//schodzimy nizej
 	}
 }
 
@@ -144,22 +144,23 @@ void Graph::DFS2(bool* was, int* dist, int parent, int u, int dest)
     was[u] = true;
 	for(unsigned int i=0; i<graph[u].size(); i++)
 	{
-		if(graph[u][i]->getTo(u).getID() == parent || was[ graph[u][i]->getTo(u).getID() ] ) //zeby sie nie cofac
+		if(graph[u][i]->getToorFrom(u).getID() == parent || was[graph[u][i]->getToorFrom(u).getID() ] ) //zeby sie nie cofac
 			continue;
 
-        if(dist[u] + graph[u][i]->getTime() == dist[ graph[u][i]->getTo(u).getID() ]) //jesli odleglosc bylaby wieksza niz ta wyliczona z Dijkstry to nie ma co sprawdzac
+        if(dist[u] + graph[u][i]->getTime() == dist[graph[u][i]->getToorFrom(u).getID() ]) //jesli odleglosc bylaby wieksza niz ta wyliczona z Dijkstry to nie ma co sprawdzac
         {
-    		if(stations[graph[u][i]->getTo(u).getID()]->getPeopleToStation(dest) - graph[u][i]->getPass() >= 0)
+    		if(stations[graph[u][i]->getToorFrom(u).getID()]->getPeopleToStation(dest) - graph[u][i]->getPass() >= 0)
 	    	{//jest na stacji jest wiecej ludzi niz przepustowosc
                 stations[u]->modifyPeopleToStation( dest, graph[u][i]->getPass() );
-                stations[graph[u][i]->getTo(u).getID()]->modifyPeopleToStation( dest, (-1)*graph[u][i]->getPass() );
+                stations[graph[u][i]->getToorFrom(u).getID()]->modifyPeopleToStation( dest, (-1)*graph[u][i]->getPass() );
 		    }
     		else
 	    	{//jesli jest mniej niz przepustowosc
-                stations[u]->modifyPeopleToStation( dest, stations[graph[u][i]->getTo(u).getID()]->getPeopleToStation(dest) );
-    			stations[graph[u][i]->getTo(u).getID()]->modifyPeopleToStation(dest, (-1)*stations[graph[u][i]->getTo(u).getID()]->getPeopleToStation(dest));
+                stations[u]->modifyPeopleToStation( dest, stations[graph[u][i]->getToorFrom(u).getID()]->getPeopleToStation(dest) );
+    			stations[graph[u][i]->getToorFrom(u).getID()]->modifyPeopleToStation(dest, (-1)*stations[graph[u][i]->getToorFrom(
+                        u).getID()]->getPeopleToStation(dest));
 	    	}
-            DFS2(was, dist, u, graph[u][i]->getTo(u).getID(), dest);//schodzimy nizej
+            DFS2(was, dist, u, graph[u][i]->getToorFrom(u).getID(), dest);//schodzimy nizej
         }
     }
 }
@@ -183,8 +184,8 @@ int* Graph::Dijkstra(int statio) //na wikipedii jest dobre wytlumaczenie
             continue;
 
         for(int i=0; i < graph[s].size(); ++i)
-            if( dist[ graph[s][i]->getTo(s).getID() ] == INF )
-                Q.push(make_pair( (-1)*(currentDistance + graph[s][i]->getTime()), graph[s][i]->getTo(s).getID() ));
+            if( dist[graph[s][i]->getToorFrom(s).getID() ] == INF )
+                Q.push(make_pair( (-1)*(currentDistance + graph[s][i]->getTime()), graph[s][i]->getToorFrom(s).getID() ));
     }
     return dist;
 }
