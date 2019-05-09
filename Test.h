@@ -46,12 +46,6 @@ void stretchesInfoTest(Graph* city) {
     return;
 }
 
-int peoplePlacementTest(Graph* city) {
-    
-    cout << "ROZMIESZCZENIE LUDZI: " << endl;
-    city->getArea()->printPopulation();
-}
-
 void simulateNDays(Graph* city, int days) {
 
     cout << "SYMULACJA " << days << " DNI:" << endl;
@@ -105,8 +99,6 @@ void allTests(Graph* city)
     stationsInfoTest(city);
     cout << endl;
     stretchesInfoTest(city);
-    cout << endl;
-    peoplePlacementTest(city);
     cout << endl;
     simulateNDays(city, 1);
     city->show();

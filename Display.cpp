@@ -9,25 +9,21 @@ void Display::displayMetro(vector <Station*> stations, vector <Stretch*> const s
 
     cout.setf(ios::left, ios::adjustfield);
     cout.width(WIDTHS);
-
-    cout.setf(ios::left, ios::adjustfield);
-    cout.width(WIDTHS);
     cout << " ";
 
     for(int i = 0; i < stations.size(); ++i){
-        cout.setf(ios::left, ios::adjustfield);
         cout.width(WIDTHS);
         cout << stations[i]->getName();
     }
     cout<< endl;
 
     for(int i = 0; i < stations.size(); ++i){
-        cout.setf(ios::left, ios::adjustfield);
         cout.width(WIDTHS);
         cout << stations[i]->getName();
 
         for(int j = 0; j < stations.size(); ++j){
 
+            bool pom = false;
             for(int k = 0; k < stretches.size(); ++k){
                 if((stretches[k]->getFrom().getID() == (stations[j])->getID() &&
                         stretches[k]->getTo().getID() == (stations[i])->getID())
@@ -35,17 +31,17 @@ void Display::displayMetro(vector <Station*> stations, vector <Stretch*> const s
                        stretches[k]->getFrom().getID() == (stations[i])->getID())){
 
 
-                    cout.setf(ios::left, ios::adjustfield);
                     cout.width(WIDTHS);
                     cout << "X";
+                    pom = true;
                     break;
                 }
 
-
-                cout.setf(ios::left, ios::adjustfield);
-                cout.width(WIDTHS);
-                cout << " ";
             }
+                if(!pom){
+                    cout.width(WIDTHS);
+                    cout << " ";
+                }
         }
         cout<<endl;
     }

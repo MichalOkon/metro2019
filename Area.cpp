@@ -9,16 +9,6 @@
 
 using namespace std;
 
-// Point[] wszedzie gdzie masz
-
-/*Point* Area::getCity() {
-    return mCity;
-}
-
-void Area::setCity(Point * city) {
-    mCity = city;
-}*/
-
 int &Area::operator[](Point p)
 {
     return this->mPopulation[p.getX()][p.getY()];
@@ -41,23 +31,13 @@ void Area::setTemple(int temple) {
     mTemple = temple;
 }
 
-/*Area::Area(Point * city, int temple) {
-    mCity = city;
-    mTemple = temple;
-    mPopulation.assign(100, 0);
-}*/
-
-
 Area::Area() {
     mSize = SIZE;
     mPopulation = new int*[SIZE]; //domyslny rozmiar
     for(int i=0; i<SIZE; i++)
         mPopulation[i] = new int[SIZE];
     this->generatePopulation();
-
-//    mCity = new Point[100];
     mTemple = 0;
-//    mPopulation.assign(100, 0);
 }
 
 Area::Area(int size)
@@ -74,7 +54,6 @@ Area::Area(int size)
 }
 
 Area::~Area() {
-//	delete[] mCity;
     for(int i=0; i<mSize; ++i)
             delete[] mPopulation[i];
     delete[] mPopulation;
@@ -116,14 +95,11 @@ void Area::populationToStation( vector <Station*> stations )
     }
     while( !Q.empty() )
     {
-        //cout << "R";
         int s = Q.size();
         for(int i=0; i<s; ++i)
         {
-            //cout << "n";
             Point p = Q.front().first;
             int ac = Q.front().second;
-   //         cout << p.getX() << " " << p.getY() << endl;
             Q.pop();
 
             if( p.getX()-1 >= 0)
@@ -150,7 +126,6 @@ void Area::populationToStation( vector <Station*> stations )
                     Q.push( make_pair( Point( p.getX()-1, p.getY() ), ac) );
                 }
             }
-//return;
             if( p.getX()+1 < mSize)
             {
                 if( tab[ p.getX()+1 ][ p.getY() ][0] == tab[ p.getX() ][ p.getY() ][0]+1 ) //X+1, Y
@@ -227,43 +202,15 @@ void Area::populationToStation( vector <Station*> stations )
             }
         }
     }
-//return;
     for(int i=0; i<mSize; ++i)
         for(int j=0; j<mSize; ++j)
             for(int k=1; k<tab[i][j].size(); ++k)
-            {
-//                cout << i << " " << j << " -> " << mPopulation[i][j] << " / " << tab[i][j].size()-1 << endl;
                 (*stations[ tab[i][j][k] ]) += mPopulation[i][j] / (tab[i][j].size()-1);
-                //wedlug valgrind jest blad z mPopulation 
-            }
 }
 
 // generates the population
 // it's just pseudo - random numbers <200, 1200)
-/*std::vector<int> Area::generatePopulation(int lenOfDistricts)
-{
-    //std::vector<int> population;
-    mPopulation.assign(100, 0); // sets the value of the vector to 0s
-    for (int i = 0; i < lenOfDistricts; i++) {
-        mPopulation[i] = rand() % 1000 + 200;
-    }
-
-
-    return mPopulation;
-}
-
-// simply returns the member population
-std::vector<int> Area::getPopulation()
-{
-    return mPopulation;
-}
-
-// a setter for population
-void Area::setPopulation(std::vector<int> population)
-{
-    mPopulation = population;
-}
-
+/*
 // writes population to the file
 // saves it in the file
 void Area::savePopulation(ofstream* toFile)
