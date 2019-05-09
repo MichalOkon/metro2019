@@ -1,4 +1,5 @@
 #include "Stretch.h"
+#include <cmath>
 
 Stretch::Stretch()
 {
@@ -10,6 +11,8 @@ Stretch::Stretch(int id, int pass, Station from, Station to)
     mPass = pass;
     mFrom = from;
     mTo = to;
+    mTime = sqrt( (mFrom.getPoint().getX() - mTo.getPoint().getX())*(mFrom.getPoint().getX() - mTo.getPoint().getX())
+        + (mFrom.getPoint().getY() - mTo.getPoint().getY())*(mFrom.getPoint().getY() - mTo.getPoint().getY()) );
 };
 
 Stretch::~Stretch()
@@ -49,9 +52,9 @@ void Stretch::setFrom(Station val)
 
 Station Stretch::getTo(int fromm)
 {
-    if(mFrom.mName == fromm)
+    if(mFrom.getID() == fromm)
         return mTo;
-    else if(mTo.mName == fromm)
+    else if(mTo.getID() == fromm)
         return mFrom;
     else
         return mTo;
@@ -60,4 +63,9 @@ Station Stretch::getTo(int fromm)
 void Stretch::setTo(Station val)
 {
     mTo = val;
+}
+
+int Stretch::getTime()
+{
+    return mTime;
 }

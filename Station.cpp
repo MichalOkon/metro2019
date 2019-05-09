@@ -1,33 +1,56 @@
 #include "Station.h"
-// #include "Point.h"
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 Station::Station()
 {
 
 }
 
-Station::Station(int name, int people, Point point)//())
+Station::Station(int id, char name, int people, Point point)
 {
+    mID = id;
     mName = name;
     mPeople = people;
-    mPoint.setX( point.getX() );
-    mPoint.setY( point.getY() );
+    mPoint = point;
 }
 
-Station::Station(int name, int people, int x, int y)
+Station::Station(int id, char name, int people, int x, int y)
 {
+    mID = id;
     mName = name;
     mPeople = people;
-    mPoint.setX( x );
-    mPoint.setY( y );
+    mPoint = Point(x,y);
 }
 
-void Station::setName(int newName)
+Station::~Station()
+{
+    peopleToStation.clear();
+}
+
+void Station::operator+=(int add)
+{
+    mPeople += add;
+}
+
+void Station::operator-=(int take)
+{
+    mPeople -= take;
+}
+
+int Station::getID()
+{
+    return mID;
+}
+
+void Station::setName(char newName)
 {
     mName = newName;
 }
 
-int Station::getName()
+char Station::getName()
 {
     return mName;
 }
@@ -57,4 +80,34 @@ void Station::setPoint(int newX, int newY)
 Point Station::getPoint()
 {
     return mPoint;
+}
+
+void Station::setPeopleToStation( vector <float>* v )
+{
+    for(int i=0; i < (*v).size(); ++i)
+    {
+        peopleToStation.push_back( mPeople * (*v)[i] );
+    }
+}
+
+int Station::getPeopleToStation(int id)
+{
+    return peopleToStation[id];
+}
+
+int &Station::operator[](int id)
+{
+    return peopleToStation[id];
+}
+
+void Station::modifyPeopleToStation(int id, int val) //zmienie mPeopleToStation[id] o val
+{
+    peopleToStation[id] += val;
+}
+
+void Station::updatePeople()
+{
+    mPeople = 0;
+    for(int i=0; i<peopleToStation.size(); ++i)
+        mPeople += peopleToStation[i];
 }
