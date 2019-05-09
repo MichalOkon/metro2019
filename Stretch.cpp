@@ -50,7 +50,7 @@ void Stretch::setFrom(Station val)
     mFrom = val;
 }
 
-Station Stretch::getTo(int fromm)
+Station Stretch::getToorFrom(int fromm)
 {
     if(mFrom.getID() == fromm)
         return mTo;
@@ -58,6 +58,11 @@ Station Stretch::getTo(int fromm)
         return mFrom;
     else
         return mTo;
+}
+
+Station Stretch::getTo()
+{
+    return mTo;
 }
 
 void Stretch::setTo(Station val)
@@ -69,3 +74,4 @@ int Stretch::getTime()
 {
     return mTime;
 }
+

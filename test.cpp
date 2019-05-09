@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include "Stretch.h"
 #include "Area.h"
 using namespace std;
@@ -9,4 +9,4 @@ int main()
     Stretch str(1,2,Station(),Station());
     Area a;
     return 0;
-}
+}*/

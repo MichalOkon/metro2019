@@ -1,6 +1,3 @@
-#ifndef GRAPH_H
-#define GRAPH_H
-
 #include <vector>
 #include <string>
 #include "Stretch.h"
@@ -42,5 +39,3 @@ class Graph
         void populationToStation();
         int* Dijkstra(int); //float ???????
 };
-
-#endif

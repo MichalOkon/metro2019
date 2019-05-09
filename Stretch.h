@@ -15,8 +15,9 @@ public:
     int getPass();
     void setPass(int val);
     Station getFrom();
+    Station getTo();
     void setFrom(Station val);
-    Station getTo(int fromm = 0);
+    Station getToorFrom(int fromm = 0);
     void setTo(Station val);
     int getTime(); // float ??????? 
 
