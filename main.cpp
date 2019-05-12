@@ -1,16 +1,23 @@
 #include <iostream>
 #include <cstdlib>
+
 #include "Area.h"
 #include "Graph.h"
 #include "Test.h"
 #include "Display.h"
+#include "Graphics.h"
+
 
 using namespace std;
 
 int main()
 {
     int n;
+    Graphics g;
+
     Graph city(10);
+    g.drawPop(city.getArea()->getPopulation());
+
 
     Display show;
     show.displayPop(city.getArea()->getPopulation());
@@ -32,6 +39,8 @@ int main()
 
     for (int i = 0; i < n; i++)
         city.addStretch();
+
+    g.drawMetro(city.getStations(), city.getStretches(), "metro");
 
     simulateNDays(&city, 20);
 
