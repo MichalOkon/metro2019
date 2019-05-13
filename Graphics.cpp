@@ -3,6 +3,7 @@
 #include "Area.h"
 #include "Simple_svg.hpp"
 #include <string>
+#include <math.h>
 
 using namespace svg;
 
@@ -54,23 +55,43 @@ void Graphics::drawMetro(vector <Station*> stations, vector <Stretch*> const str
     doc << border;
 
     for(int i = 0; i < stretches.size(); i++) {
-        doc << (Polyline(Stroke(5, Color::Black)) << Spoint(stretches[i]->getFrom().getPoint().getX() * 100 + 50,
+
+        //a line representing connections between stations
+        doc << (Polyline(Stroke(max(2, min(10, stretches[i]->getPass()/5)), Color::Blue))
+        << Spoint(stretches[i]->getFrom().getPoint().getX() * 100 + 50,
                 stretches[i]->getFrom().getPoint().getY() * 100 + 50)
-                                                 << Spoint(stretches[i]->getTo().getPoint().getX() * 100 + 50,
-                                                         stretches[i]->getTo().getPoint().getY() * 100 + 50));
+                << Spoint(stretches[i]->getTo().getPoint().getX() * 100 + 50,
+                        stretches[i]->getTo().getPoint().getY() * 100 + 50));
+
+        //station's throughput
+        doc << Text(Spoint(((stretches[i]->getFrom().getPoint().getX() * 100 + 50) +
+        stretches[i]->getTo().getPoint().getX() * 100 + 50)/2.0,
+                (((stretches[i]->getFrom().getPoint().getY() * 100 + 50)
+                + stretches[i]->getTo().getPoint().getY() * 100 + 50)/2.0 + 20)), to_string(stretches[i]->getPass()),
+                    Color::Brown, Font(20, "Verdana"));
 
     }
 
     for(int i = 0; i < stations.size(); i++){
+        //stations show as circles
         doc << Circle(Spoint(stations[i]->getPoint().getX() * 100 + 50, stations[i]->getPoint().getY() * 100 + 50),
-                30, Fill(Color(255,0,0)), Stroke(1, Color(0, 0, 0)));
-        doc << Text(Spoint(stations[i]->getPoint().getX() * 100 + 65, stations[i]->getPoint().getY() * 100 + 65),
-                to_string(stations[i]->getPeople()), Color::Blue, Font(20, "Verdana"));
-        doc << Text(Spoint(stations[i]->getPoint().getX() * 100 + 65, stations[i]->getPoint().getY() * 100 + 35),
-                "(" + to_string(stations[i]->getPoint().getX()) + ", " + to_string (stations[i]->getPoint().getY()) + ")",
-                Color::Blue, Font(20, "Verdana"));
-    }
+                max(8, min(stations[i]->getPeople()/10, 50)), Fill(Color(255,0,0)), Stroke(1, Color(0, 0, 0)));
 
+        string sname(1, stations[i]->getName());
+
+        //TODO: text in a cricle showing station's number
+        //doc << Text(Spoint(stations[i]->getPoint().getX() * 100 + 35, stations[i]->getPoint().getY() * 100 + 35),
+        //            sname, Color::Black, Font(max(8, min(stations[i]->getPeople()/10, 50)), "Verdana"));
+
+        //number of people at the station
+        doc << Text(Spoint(stations[i]->getPoint().getX() * 100 + 65, stations[i]->getPoint().getY() * 100 + 65),
+                to_string(stations[i]->getPeople()), Color::Black, Font(20, "Verdana"));
+        //station's coordinates
+        doc << Text(Spoint(stations[i]->getPoint().getX() * 100 + 65, stations[i]->getPoint().getY() * 100 + 35),
+                "(" + to_string(stations[i]->getPoint().getX())
+                + ", " + to_string (stations[i]->getPoint().getY()) + ")",
+                Color::Black, Font(20, "Verdana"));
+    }
 
     doc.save();
 }

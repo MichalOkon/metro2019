@@ -62,6 +62,7 @@ Area::~Area() {
 
 void Area::generatePopulation() // O(mSize^3)
 {
+    srand(time(nullptr));
     int a = 0;
     for (int k = 0; k < mSize / 2; ++k) { //zeby w centrum miasta bylo wiecej ludzi
         for (int i = k; i < mSize - k; ++i) {
