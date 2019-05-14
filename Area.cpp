@@ -62,7 +62,6 @@ Area::~Area() {
 
 void Area::generatePopulation() // O(mSize^3)
 {
-    srand(time(nullptr));
     int a = 0;
     for (int k = 0; k < mSize / 2; ++k) { //zeby w centrum miasta bylo wiecej ludzi
         for (int i = k; i < mSize - k; ++i) {
@@ -76,7 +75,7 @@ void Area::generatePopulation() // O(mSize^3)
     }
 }
 
-void Area::populationToStation( vector <Station*> stations )
+void Area::populationToStation( vector <Station*> stations ) //Zrobic przejscie area w area
 {
     for(int i=0; i<stations.size(); ++i)
         stations[i]->setPeople(0);
@@ -203,6 +202,9 @@ void Area::populationToStation( vector <Station*> stations )
             }
         }
     }
+
+/////////////////////////////////////////////// ^ przerobic mape na mape
+
     for(int i=0; i<mSize; ++i)
         for(int j=0; j<mSize; ++j)
             for(int k=1; k<tab[i][j].size(); ++k)
@@ -236,12 +238,13 @@ void Area::restorePopulation(ifstream* fromFile, int elToRead)
     this->setPopulation(temp);
 }
 
+
 void Area::printPopulation() {
     for (int i = 0; i < mPopulation.size(); i++) {
         cout << mPopulation[i] << "\n";
     }
-}*/
-
+}
+*/
 
 // TODO: match points in area with population on each district
 

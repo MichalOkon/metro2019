@@ -209,8 +209,6 @@ void Graph::action() //jedno przejscie w grafie, ktory moze byc cyklicznys
     }
     for(int i=0; i<mStationsAmount; ++i) //aktualizuje mPeople dla kazdej stacji na podstawie mPeopleToStation
         stations[i]->updatePeople();
-
-    this->show();
 }
 
 void Graph::populationToStation()

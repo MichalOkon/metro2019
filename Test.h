@@ -11,7 +11,7 @@ void stationNamesTest(Graph* city) {
     
     cout << "STACJE: " << endl;
 
-    for (int i = 1; i < stations.size(); i++) {
+    for (int i = 0; i < stations.size(); i++) {
         cout << stations[i]->getName() << endl;
     }
     return;

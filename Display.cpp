@@ -77,6 +77,9 @@ void Display::displayPop(int** population) {
     }
 }
 
+/////////////////////wzorzec obserwator
+////////////dodatkowe klasy design
+
 void Display::savePop(int** population){
 
     ofstream file;

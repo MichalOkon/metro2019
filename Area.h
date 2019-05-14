@@ -1,10 +1,8 @@
-
-#ifndef AREA_H
-#define AREA_H
 #include <iostream>
 #include <vector>
 #include <fstream>
-
+#ifndef AREA_H
+#define AREA_H
 #include "Station.h"
 #define INF 1000000000 //10^9
 #define SIZE 10 //domyslny rozmiar boku mapy
