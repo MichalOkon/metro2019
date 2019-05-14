@@ -9,7 +9,7 @@ Station::Station()
 
 }
 
-Station::Station(int id, char name, int people, Point point)
+Station::Station(int id, string name, int people, Point point)
 {
     mID = id;
     mName = name;
@@ -17,7 +17,7 @@ Station::Station(int id, char name, int people, Point point)
     mPoint = point;
 }
 
-Station::Station(int id, char name, int people, int x, int y)
+Station::Station(int id, string name, int people, int x, int y)
 {
     mID = id;
     mName = name;
@@ -50,7 +50,7 @@ void Station::setName(char newName)
     mName = newName;
 }
 
-char Station::getName()
+string Station::getName()
 {
     return mName;
 }

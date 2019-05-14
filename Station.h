@@ -14,19 +14,19 @@ class Station
         int mID;
         int mPeople;
         Point mPoint;
-        char mName;
+        string mName;
         vector <int> peopleToStation; //peopleToStation[i] zwraca ile ludzi chce z tej stacji do stacji 'i'
 
     public:
         Station();
-        Station(int ID, char name, int people, Point point);
-        Station(int ID, char name, int people, int newX, int newY);
+        Station(int ID, string name, int people, Point point);
+        Station(int ID, string name, int people, int newX, int newY);
         ~Station();
 
         int getID();
 
         void setName(char newName);
-        char getName();
+        string getName();
 
         void setPeople(int newPeople);
         int getPeople();

@@ -28,7 +28,7 @@ class Graph
         int getStretchesAmount();
         Area* getArea();
         void addStation();
-        void addStation(char, int, int, int);
+        void addStation(string, int, int, int);
         void addStretch();
         void addStretch(int, int, int);
         void toOnePoint(int);

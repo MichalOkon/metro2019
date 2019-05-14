@@ -77,7 +77,7 @@ void Graphics::drawMetro(vector <Station*> stations, vector <Stretch*> const str
         doc << Circle(Spoint(stations[i]->getPoint().getX() * 100 + 50, stations[i]->getPoint().getY() * 100 + 50),
                 max(8, min(stations[i]->getPeople()/10, 50)), Fill(Color(255,0,0)), Stroke(1, Color(0, 0, 0)));
 
-        string sname(1, stations[i]->getName());
+        //string sname(1, stations[i]->getName());
 
         //TODO: text in a cricle showing station's number
         //doc << Text(Spoint(stations[i]->getPoint().getX() * 100 + 35, stations[i]->getPoint().getY() * 100 + 35),

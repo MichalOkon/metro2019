@@ -2,6 +2,7 @@
 #include <vector>
 #include <queue>
 #include <string>
+#include <map>
 #include "Graph.h"
 #include "Station.h"
 #include "Stretch.h"
@@ -10,6 +11,7 @@
 
 using namespace std;
 
+map <string, int> stringToID;
 
 /////////////////////////////////  constructors
 Graph::Graph(int s) //generuje Area o rozmiarze s X s
@@ -74,7 +76,7 @@ Area* Graph::getArea()
 void Graph::addStation() //wczytanie wartosci wewnatrz funkcji
 {
     int id, x, y;
-    char name;
+    string name;
     cout << "Podaj nazwe i wspolrzedne stacji" << endl;
     cin >> name >> x >> y;
     id = mStationsAmount++;
@@ -82,23 +84,29 @@ void Graph::addStation() //wczytanie wartosci wewnatrz funkcji
     vector < Stretch* > v; //tu beda polaczenia tej stacji z innymi
     graph.push_back(v);
     stations.push_back(newStation); //do tablicy stacji
+    stringToID.insert( make_pair(name,id) );
 }
 
-void Graph::addStation(char name, int people, int x, int y)
+void Graph::addStation(string name, int people, int x, int y)
 {
     int id = mStationsAmount++;
     Station* newStation = new Station(id,name,people,x,y);
     vector < Stretch* > v; //tu beda polaczenia tej stacji z innymi
     graph.push_back(v);
     stations.push_back(newStation); //do tabliy stacji
+    stringToID.insert( make_pair(name,id) );
 }
 
 void Graph::addStretch() //wczytuje parametry wewnatrz
 {
-    int from, to, howMany;
+    int howMany;
+    string sFrom, sTo;
+    int from, to;
     cout << "Podaj skad, dokad i jaka przepustowosc" << endl;
-    cin >> from >> to >> howMany; ///////////////na razie from i to sa wartosciami mID; TODO: przejscie mName -> mID
-	Stretch * str = new Stretch(mStretchesAmount++, howMany, *stations[from], *stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
+    cin >> sFrom >> sTo >> howMany; ///////////////na razie from i to sa wartosciami mID; TODO: przejscie mName -> mID
+	from = stringToID[sFrom];
+    to = stringToID[sTo];
+    Stretch * str = new Stretch(mStretchesAmount++, howMany, *stations[from], *stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
 	graph[from].push_back(str);
 	graph[to].push_back(str);
 	connections.push_back(str); //tablica polaczen
