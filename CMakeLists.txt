@@ -7,7 +7,6 @@ include_directories(.)
 include_directories(include)
 include_directories(src)
 
-
 add_executable(metro2019
         include/Area.h
         include/Display.h
