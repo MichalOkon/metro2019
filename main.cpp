@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <windows.h>
 #include "Area.h"
 #include "Graph.h"
 #include "Test.h"
@@ -22,24 +23,28 @@ int main()
 
     cout << "Gimme stations amount: " << endl;
     cin >> n;
+    cout << endl;
 
     for(int i=0; i < n; i++)
         city.addStation();
 
+    cout << endl;
     city.populationToStation();
 
     cout << "Gimme stretches amount: " << endl;
     cin >> n;
 
+    cout << endl;
     for (int i = 0; i < n; i++)
         city.addStretch();
+    // cout << endl;
 
     char c;
     bool breakFlag = 0;
 
     while (!breakFlag) {
 
-        system("clear");
+        system("cls");
 
         cout << "Co chcesz zrobic:\n";
         cout << "1. Wypisz nazwy\n";
@@ -51,6 +56,7 @@ int main()
         cout << "7. Odczytaj ludnosc z pliku\n";
         cout << "8. Narusuj mape ludnosci do pliku\n";
         cout << "9. Rysuj mape metra do pliku" << endl;
+        cout << "10. Otworz plik w przegladarce" << endl;
 
         cout << "Podaj odpowiednia liczbe: ";
         int request;
@@ -89,6 +95,16 @@ int main()
         case 9:
             draw.drawMetro(city.getStations(), city.getStretches(), "City");
             break;
+
+        case 10: {
+            std::string filename;
+            cout << "Podaj nazwe pliku: ";
+            cin >> filename;
+            cout << endl;
+
+            showBrowser(filename);
+            break;
+        }
         default:
             cout << "Nie wiem co zrobic z twoim zapytaniem..." << endl;
             break;

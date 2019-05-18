@@ -85,11 +85,21 @@ void peopleRestoreTest(Graph* city) {
     return;
 }
 
-// TODO: What's the aim?
-void commonAimTest(Graph* city)
-{
-
+void showBrowser(std::string filename) {
+    LPCTSTR helpFile = filename.c_str();//"City.svg";//sHlpFile;
+    try {
+        ShellExecute(NULL, "open", helpFile, NULL, NULL, SW_SHOWNORMAL);
+        system("PAUSE");
+    } catch (std::exception &ex) {
+        cout << "Oops, can't open the file" << endl;
+    }
 }
+
+// TODO: What's the aim?
+// void commonAimTest(Graph* city)
+// {
+
+// }
 
 
 void allTests(Graph* city)
