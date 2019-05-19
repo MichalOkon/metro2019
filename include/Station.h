@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <ostream>
 
 #include "Point.h"
 
@@ -42,7 +43,10 @@ class Station
 
         void operator+=(int); //zwieksza mPeople o int
         void operator-=(int); //zmniejsza mPeople o int
-        int &operator[](int); //zwraca peopleToStation[ int ]
+        int &operator[](int);
+
+    friend ostream &operator<<(ostream &os, const Station &station);
+    //zwraca peopleToStation[ int ]
 
     protected:
 };

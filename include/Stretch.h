@@ -1,6 +1,7 @@
 #ifndef STRETCH_H
 #define STRETCH_H
 
+#include <ostream>
 #include "Station.h"
 
 class Stretch
@@ -19,7 +20,10 @@ public:
     void setFrom(Station val);
     Station getToorFrom(int fromm = 0);
     void setTo(Station val);
-    int getTime(); // float ??????? 
+    int getTime();
+
+    friend ostream &operator<<(ostream &os, const Stretch &stretch);
+    // float ???????
 
 protected:
 

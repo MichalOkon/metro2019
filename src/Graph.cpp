@@ -244,3 +244,8 @@ void Graph::show()
         cout << stations[i]->getName() << " " << stations[i]->getPeople() << endl; //valgrind mowi, ze jest blad w getPeople(), a raczej w populationToStation()
     return;
 }
+
+ostream &operator<<(ostream &os, const Graph &graph) {
+    os /*<< "graph: " << graph.graph*/ << " stations: " << graph.stations << " connections: " << graph.connections;
+    return os;
+}

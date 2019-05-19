@@ -5,6 +5,7 @@
 #include "Test.h"
 #include "Display.h"
 #include "Graphics.h"
+#include "Statistics.h"
 
 using namespace std;
 
@@ -68,12 +69,14 @@ int main()
             stretchesInfoTest(&city);
             show.displayMetro(city.getStations(), city.getStretches());
             break;
-        case 4:
+        case 4: {
             cout << "Podaj liczbe dni do symulacji: ";
             int days;
             cin >> days;
-            simulateNDays(&city, days);
+            Statistics *stat = simulateNDays(&city, days);
+            cout << stat << endl;
             break;
+        }
         case 5:
             show.displayPop(city.getArea()->getPopulation());
             break;

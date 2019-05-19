@@ -75,3 +75,8 @@ int Stretch::getTime()
     return mTime;
 }
 
+ostream &operator<<(ostream &os, const Stretch &stretch) {
+    os << "mPass: " << stretch.mPass << " mFrom: " << stretch.mFrom << " mTo: " << stretch.mTo;
+    return os;
+}
+

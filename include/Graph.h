@@ -2,6 +2,7 @@
 #define GRAPH_H
 #include <vector>
 #include <string>
+#include <ostream>
 #include "Stretch.h"
 #include "Station.h"
 #include "Area.h"
@@ -39,6 +40,9 @@ class Graph
         void show();
         void action();
         void populationToStation();
-        int* Dijkstra(int); //float ???????
+        int* Dijkstra(int);
+
+    friend ostream &operator<<(ostream &os, const Graph &graph);
+    //float ???????
 };
 #endif

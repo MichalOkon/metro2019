@@ -123,6 +123,33 @@ metro2019/fast:
 	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/build
 .PHONY : metro2019/fast
 
+Statistics.o: Statistics.cpp.o
+
+.PHONY : Statistics.o
+
+# target to build an object file
+Statistics.cpp.o:
+	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/Statistics.cpp.o
+.PHONY : Statistics.cpp.o
+
+Statistics.i: Statistics.cpp.i
+
+.PHONY : Statistics.i
+
+# target to preprocess a source file
+Statistics.cpp.i:
+	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/Statistics.cpp.i
+.PHONY : Statistics.cpp.i
+
+Statistics.s: Statistics.cpp.s
+
+.PHONY : Statistics.s
+
+# target to generate assembly for a file
+Statistics.cpp.s:
+	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/Statistics.cpp.s
+.PHONY : Statistics.cpp.s
+
 src/Area.o: src/Area.cpp.o
 
 .PHONY : src/Area.o
@@ -375,6 +402,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... metro2019"
 	@echo "... edit_cache"
+	@echo "... Statistics.o"
+	@echo "... Statistics.i"
+	@echo "... Statistics.s"
 	@echo "... src/Area.o"
 	@echo "... src/Area.i"
 	@echo "... src/Area.s"

@@ -25,4 +25,4 @@ add_executable(metro2019
         src/Station.cpp
         src/Stretch.cpp
         src/test.cpp
-        )
+        Statistics.cpp Statistics.h)

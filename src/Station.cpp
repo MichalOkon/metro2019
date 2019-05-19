@@ -111,3 +111,8 @@ void Station::updatePeople()
     for(int i=0; i<peopleToStation.size(); ++i)
         mPeople += peopleToStation[i];
 }
+
+ostream &operator<<(ostream &os, const Station &station) {
+    os << "mID: " << station.mID << " mPeople: " << station.mPeople << " mName: " << station.mName;
+    return os;
+}

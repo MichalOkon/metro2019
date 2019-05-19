@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <cstdlib>
 #include "Graph.h"
+#include "Statistics.h"
+
 using namespace std;
 
 void stationNamesTest(Graph* city) {
@@ -46,17 +48,23 @@ void stretchesInfoTest(Graph* city) {
     return;
 }
 
-void simulateNDays(Graph* city, int days) {
+Statistics* simulateNDays(Graph* city, int days) {
 
     cout << "SYMULACJA " << days << " DNI:" << endl;
+    /*
+     * xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+     *
+     */
+    Statistics* stat = new Statistics();
 
     for (int i = 0; i < days; i++) {
         cout << "DAY " << i + 1 << endl;
         city->action();
+        stat->addDay(city);
         city->show();
         cout << endl;
     }
-    return;
+    return stat;
 }
 
 void peopleSaveTest(Graph* city) {
