@@ -19,8 +19,6 @@ ConnDialog::~ConnDialog()
 void ConnDialog::on_buttonBox_accepted()
 {
     hide();
-    sdDialog = new SelectDoDialog(this);
-    sdDialog->show();
 }
 
 

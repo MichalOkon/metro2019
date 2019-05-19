@@ -2,7 +2,6 @@
 #define STATIONSDIALOG_H
 
 #include <QDialog>
-#include "conndialog.h"
 
 namespace Ui {
 class StationsDialog;
@@ -23,7 +22,6 @@ private slots:
 
 private:
     Ui::StationsDialog *ui;
-    ConnDialog *connDialog;
 };
 
 #endif // STATIONSDIALOG_H

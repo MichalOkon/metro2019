@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
         conndialog.cpp \
+        greetdialog.cpp \
         main.cpp \
         mainwindow.cpp \
         selectdodialog.cpp \
@@ -33,12 +34,14 @@ SOURCES += \
 
 HEADERS += \
         conndialog.h \
+        greetdialog.h \
         mainwindow.h \
         selectdodialog.h \
         stationsdialog.h
 
 FORMS += \
         conndialog.ui \
+        greetdialog.ui \
         mainwindow.ui \
         selectdodialog.ui \
         stationsdialog.ui

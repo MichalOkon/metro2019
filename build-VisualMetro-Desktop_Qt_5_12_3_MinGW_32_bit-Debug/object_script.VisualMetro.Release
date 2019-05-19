@@ -1,0 +1,11 @@
+release/conndialog.o
+release/greetdialog.o
+release/main.o
+release/mainwindow.o
+release/selectdodialog.o
+release/stationsdialog.o
+release/moc_conndialog.o
+release/moc_greetdialog.o
+release/moc_mainwindow.o
+release/moc_selectdodialog.o
+release/moc_stationsdialog.o

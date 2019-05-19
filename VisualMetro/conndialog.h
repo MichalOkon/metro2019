@@ -2,7 +2,6 @@
 #define CONNDIALOG_H
 
 #include <QDialog>
-#include <selectdodialog.h>
 
 namespace Ui {
 class ConnDialog;
@@ -23,7 +22,6 @@ private slots:
 
 private:
     Ui::ConnDialog *ui;
-    SelectDoDialog *sdDialog;
 };
 
 #endif // CONNDIALOG_H

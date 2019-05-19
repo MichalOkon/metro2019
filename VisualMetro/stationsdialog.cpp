@@ -17,8 +17,6 @@ StationsDialog::~StationsDialog()
 void StationsDialog::on_buttonBox_accepted()
 {
     hide();
-    connDialog = new ConnDialog(this);
-    connDialog->show();
 }
 
 std::vector<std::string> split1(std::string strToSplit, char delimeter)

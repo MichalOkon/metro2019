@@ -16,7 +16,18 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     hide();
+    selectDialog = new SelectDoDialog(this);
+    selectDialog->show();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
     stDialog = new StationsDialog(this);
     stDialog->show();
+}
 
+void MainWindow::on_pushButton_3_clicked()
+{
+    connDialog = new ConnDialog(this);
+    connDialog->show();
 }

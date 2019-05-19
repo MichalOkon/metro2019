@@ -1,0 +1,11 @@
+debug/conndialog.o
+debug/greetdialog.o
+debug/main.o
+debug/mainwindow.o
+debug/selectdodialog.o
+debug/stationsdialog.o
+debug/moc_conndialog.o
+debug/moc_greetdialog.o
+debug/moc_mainwindow.o
+debug/moc_selectdodialog.o
+debug/moc_stationsdialog.o
