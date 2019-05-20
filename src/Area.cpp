@@ -3,8 +3,8 @@
 #include <ctime>
 #include <string> 
 #include <queue>
-#include "Area.h"
-#include "Station.h"
+#include "../include/Area.h"
+#include "../include/Station.h"
 
 
 using namespace std;

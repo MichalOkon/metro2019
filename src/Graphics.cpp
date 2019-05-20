@@ -1,6 +1,6 @@
-#include "Graphics.h"
+#include "../include/Graphics.h"
 
-#include "Area.h"
+#include "../include/Area.h"
 #include "Simple_svg.hpp"
 #include <string>
 #include <math.h>

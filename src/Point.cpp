@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Point.h"
+#include "../include/Point.h"
 
 // Constructors
 Point::Point(int x, int y) {
