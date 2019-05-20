@@ -18,24 +18,45 @@ int main()
     Display show;
     Graphics draw;
 
-    cout << "Hello, world" << endl;
+    bool breakFlag = false;
 
-    cout << "Gimme stations amount: " << endl;
-    cin >> n;
+    while(!breakFlag) {
 
-    for(int i=0; i < n; i++)
-        city.addStation();
+        cout << "Czy chcesz zaladowac metro z pliku? Wpisz 'Y'(tak) lub 'N'(nie)" << endl;
 
-    city.populationToStation();
+        char c;
+        cin >> c;
 
-    cout << "Gimme stretches amount: " << endl;
-    cin >> n;
+        if (c == 'y' || c == 'Y') {
+            if(city.loadMetro())
+                breakFlag = true;
+            else
+                cout << "Nie odnaleziono pliku do wczytania" << endl;
+        }
+        else if(c == 'n' || c == 'N') {
+            cout << "Podaj ilosc stacji: " << endl;
+            cin >> n;
 
-    for (int i = 0; i < n; i++)
-        city.addStretch();
+            for (int i = 0; i < n; i++)
+                city.addStation();
 
+            city.populationToStation();
+
+            cout << "Podaj ilosc odcinkow: " << endl;
+            cin >> n;
+
+            for (int i = 0; i < n; i++)
+                city.addStretch();
+
+            breakFlag = true;
+        }
+        else{
+            cout << "Podaj prawidlowy znak!" << endl;
+        }
+
+    }
     char c;
-    bool breakFlag = 0;
+    breakFlag = false;
 
     while (!breakFlag) {
 
@@ -51,6 +72,7 @@ int main()
         cout << "7. Odczytaj ludnosc z pliku\n";
         cout << "8. Narusuj mape ludnosci do pliku\n";
         cout << "9. Rysuj mape metra do pliku" << endl;
+        cout << "10. Zapisz mape metra do pliku" << endl;
 
         cout << "Podaj odpowiednia liczbe: ";
         int request;
@@ -87,8 +109,12 @@ int main()
             draw.drawPop(city.getArea()->getPopulation());
             break;
         case 9:
-            draw.drawMetro(city.getStations(), city.getStretches(), "City");
+            draw.drawMetro(city.getStations(), city.getStretches(), "metro");
             break;
+        case 10:
+            city.saveMetro();
+            break;
+
         default:
             cout << "Nie wiem co zrobic z twoim zapytaniem..." << endl;
             break;
@@ -98,7 +124,7 @@ int main()
 
         cin >> c;
         if (c == 'N' || c == 'n') {
-            breakFlag = 1;
+            breakFlag = true;
         }
 
     }
