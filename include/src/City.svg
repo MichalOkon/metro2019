@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1100px" height="1100px" xmlns="http://www.w3.org/2000/svg" version="1.1" >
+	<polygon points="0,1100 1100,1100 1100,0 0,0 " fill="transparent" stroke-width="1" stroke="rgb(0,0,0)" />
+	<polyline points="50,150 550,550 " fill="transparent" stroke-width="2" stroke="rgb(0,0,255)" />
+	<text x="300" y="330" fill="rgb(165,42,42)" font-size="20" font-family="Verdana" >10</text>
+	<polyline points="550,550 950,150 " fill="transparent" stroke-width="3" stroke="rgb(0,0,255)" />
+	<text x="750" y="330" fill="rgb(165,42,42)" font-size="20" font-family="Verdana" >15</text>
+	<polyline points="550,550 50,450 " fill="transparent" stroke-width="2" stroke="rgb(0,0,255)" />
+	<text x="300" y="480" fill="rgb(165,42,42)" font-size="20" font-family="Verdana" >14</text>
+	<circle cx="50" cy="150" r="4" fill="rgb(255,0,0)" stroke-width="1" stroke="rgb(0,0,0)" />
+	<text x="65" y="135" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >26</text>
+	<text x="65" y="165" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >(0, 9)</text>
+	<circle cx="550" cy="550" r="21.5" fill="rgb(255,0,0)" stroke-width="1" stroke="rgb(0,0,0)" />
+	<text x="565" y="535" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >434</text>
+	<text x="565" y="565" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >(5, 5)</text>
+	<circle cx="950" cy="150" r="4" fill="rgb(255,0,0)" stroke-width="1" stroke="rgb(0,0,0)" />
+	<text x="965" y="135" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >49</text>
+	<text x="965" y="165" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >(9, 9)</text>
+	<circle cx="50" cy="450" r="5" fill="rgb(255,0,0)" stroke-width="1" stroke="rgb(0,0,0)" />
+	<text x="65" y="435" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >105</text>
+	<text x="65" y="465" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >(0, 6)</text>
+</svg>
