@@ -1,4 +1,4 @@
-#include "Stretch.h"
+#include "../include/Stretch.h"
 #include <cmath>
 
 Stretch::Stretch()

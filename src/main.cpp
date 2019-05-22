@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstdlib>
-#include "Area.h"
-#include "Graph.h"
-#include "Test.h"
-#include "Display.h"
-#include "Graphics.h"
+#include "../include/Area.h"
+#include "../include/Graph.h"
+#include "../include/Test.h"
+#include "../include/Display.h"
+#include "../include/Graphics.h"
 
 using namespace std;
 

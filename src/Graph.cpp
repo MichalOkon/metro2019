@@ -3,10 +3,10 @@
 #include <queue>
 #include <string>
 #include <map>
-#include "Graph.h"
-#include "Station.h"
-#include "Stretch.h"
-#include "Area.h"
+#include "../include/Graph.h"
+#include "../include/Station.h"
+#include "../include/Stretch.h"
+#include "../include/Area.h"
 #define INF 1000000000 //10^9
 
 using namespace std;
