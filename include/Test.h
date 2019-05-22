@@ -38,8 +38,8 @@ void stretchesInfoTest(Graph* city) {
     for (int i = 0; i < connections.size(); i++) {
 
         cout << "ID: " << connections[i]->getId() << endl;
-        cout << "Z: " << connections[i]->getFrom().getName() << endl;
-        cout << "Do: " << connections[i]->getTo().getName() << endl;
+        cout << "Z: " << connections[i]->getFrom()->getName() << endl;
+        cout << "Do: " << connections[i]->getTo()->getName() << endl;
         cout << "Przepustowość: " << connections[i]->getPass() << endl;
 
     }

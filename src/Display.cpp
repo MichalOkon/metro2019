@@ -25,10 +25,10 @@ void Display::displayMetro(vector <Station*> stations, vector <Stretch*> const s
 
             bool pom = false;
             for(int k = 0; k < stretches.size(); ++k){
-                if((stretches[k]->getFrom().getID() == (stations[j])->getID() &&
-                        stretches[k]->getTo().getID() == (stations[i])->getID())
-                   || (stretches[k]->getTo().getID() == (stations[j])->getID() &&
-                       stretches[k]->getFrom().getID() == (stations[i])->getID())){
+                if((stretches[k]->getFrom()->getID() == (stations[j])->getID() &&
+                        stretches[k]->getTo()->getID() == (stations[i])->getID())
+                   || (stretches[k]->getTo()->getID() == (stations[j])->getID() &&
+                       stretches[k]->getFrom()->getID() == (stations[i])->getID())){
 
 
                     cout.width(WIDTHS);

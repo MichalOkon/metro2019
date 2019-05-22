@@ -58,16 +58,16 @@ void Graphics::drawMetro(vector <Station*> stations, vector <Stretch*> const str
 
         //a line representing connections between stations
         doc << (Polyline(Stroke(max(2, min(10, stretches[i]->getPass()/5)), Color::Blue))
-        << Spoint(stretches[i]->getFrom().getPoint().getX() * 100 + 50,
-                stretches[i]->getFrom().getPoint().getY() * 100 + 50)
-                << Spoint(stretches[i]->getTo().getPoint().getX() * 100 + 50,
-                        stretches[i]->getTo().getPoint().getY() * 100 + 50));
+        << Spoint(stretches[i]->getFrom()->getPoint().getX() * 100 + 50,
+                stretches[i]->getFrom()->getPoint().getY() * 100 + 50)
+                << Spoint(stretches[i]->getTo()->getPoint().getX() * 100 + 50,
+                        stretches[i]->getTo()->getPoint().getY() * 100 + 50));
 
         //station's throughput
-        doc << Text(Spoint(((stretches[i]->getFrom().getPoint().getX() * 100 + 50) +
-        stretches[i]->getTo().getPoint().getX() * 100 + 50)/2.0,
-                (((stretches[i]->getFrom().getPoint().getY() * 100 + 50)
-                + stretches[i]->getTo().getPoint().getY() * 100 + 50)/2.0 + 20)), to_string(stretches[i]->getPass()),
+        doc << Text(Spoint(((stretches[i]->getFrom()->getPoint().getX() * 100 + 50) +
+        stretches[i]->getTo()->getPoint().getX() * 100 + 50)/2.0,
+                (((stretches[i]->getFrom()->getPoint().getY() * 100 + 50)
+                + stretches[i]->getTo()->getPoint().getY() * 100 + 50)/2.0 + 20)), to_string(stretches[i]->getPass()),
                     Color::Brown, Font(20, "Verdana"));
 
     }

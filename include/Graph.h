@@ -31,6 +31,7 @@ class Graph
         void addStation(string, int, int, int);
         void addStretch();
         void addStretch(int, int, int);
+        void addStretch(string, string, int);
         void toOnePoint(int);
         void DFS(int, int);
         void DFS2(bool*, int*, int, int, int);

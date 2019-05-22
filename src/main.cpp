@@ -39,7 +39,7 @@ int main()
 
     while (!breakFlag) {
 
-        system("clear");
+        system("cls");
 
         cout << "Co chcesz zrobic:\n";
         cout << "1. Wypisz nazwy\n";
