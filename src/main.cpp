@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cstdlib>
-#include "../include/Area.h"
-#include "../include/Graph.h"
-#include "../include/Test.h"
-#include "../include/Display.h"
-#include "../include/Graphics.h"
-
+#include "Area.h"
+#include "Graph.h"
+#include "Test.h"
+#include "Display.h"
+#include "Graphics.h"
+#include "SaveAndLoad.h"
 using namespace std;
 
 int main()
@@ -15,8 +15,9 @@ int main()
     int n;
     Graph city(10);
 
-    Display show;
-    Graphics draw;
+    Display show(&city);
+    Graphics draw(&city);
+    SL saver(&city);
 
     bool breakFlag = false;
 
@@ -28,7 +29,7 @@ int main()
         cin >> c;
 
         if (c == 'y' || c == 'Y') {
-            if(city.loadMetro())
+            if(saver.loadMetro("saved.txt"))
                 breakFlag = true;
             else
                 cout << "Nie odnaleziono pliku do wczytania" << endl;
@@ -88,16 +89,16 @@ int main()
             break;
         case 3:
             stretchesInfoTest(&city);
-            show.displayMetro(city.getStations(), city.getStretches());
+            show.drawMetro();
             break;
         case 4:
             cout << "Podaj liczbe dni do symulacji: ";
             int days;
             cin >> days;
-            simulateNDays(&city, days);
+            simulateNDays(&city, days, draw);
             break;
         case 5:
-            show.displayPop(city.getArea()->getPopulation());
+            show.drawPop();
             break;
         case 6:
             peopleSaveTest(&city);
@@ -106,13 +107,13 @@ int main()
             peopleRestoreTest(&city);
             break;
         case 8:
-            draw.drawPop(city.getArea()->getPopulation());
+            draw.drawPop();
             break;
         case 9:
-            draw.drawMetro(city.getStations(), city.getStretches(), "metro");
+            draw.drawMetro();
             break;
         case 10:
-            city.saveMetro();
+            saver.saveMetro("saved.txt");
             break;
 
         default:

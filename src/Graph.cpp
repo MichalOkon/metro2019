@@ -106,7 +106,7 @@ void Graph::addStretch() //wczytuje parametry wewnatrz
     cin >> sFrom >> sTo >> howMany; ///////////////na razie from i to sa wartosciami mID; TODO: przejscie mName -> mID
 	from = stringToID[sFrom];
     to = stringToID[sTo];
-    Stretch * str = new Stretch(mStretchesAmount++, howMany, *stations[from], *stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
+    Stretch * str = new Stretch(mStretchesAmount++, howMany, stations[from], stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
 	graph[from].push_back(str);
 	graph[to].push_back(str);
 	connections.push_back(str); //tablica polaczen
@@ -114,7 +114,7 @@ void Graph::addStretch() //wczytuje parametry wewnatrz
 
 void Graph::addStretch(int from, int to, int how_many) //przyjmuje parametry z zewnatrz
 {
-    Stretch * str = new Stretch(mStretchesAmount++, how_many, *stations[from], *stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
+    Stretch * str = new Stretch(mStretchesAmount++, how_many, stations[from], stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
 	graph[from].push_back(str);
 	graph[to].push_back(str);
 	connections.push_back(str); //tablica polaczen
@@ -245,66 +245,3 @@ void Graph::show()
     return;
 }
 
-void Graph::saveMetro(string name){
-    ofstream file;
-    file.open(name, ofstream::out);
-
-    file << stations.size() << endl;
-
-    for(auto i: stations){
-        file << i->getName() << endl;
-        file << i->getPeople() << endl;
-        file << i->getPoint().getX() << endl;
-        file << i->getPoint().getY() << endl;
-    }
-
-    file << connections.size() << endl;
-
-    for(auto i: connections){
-        file << i->getTo().getID() << endl;
-        file << i->getFrom().getID() << endl;
-        file << i->getPass() << endl;
-    }
-
-}
-
-
-bool Graph::loadMetro(string name){
-    ifstream file;
-    file.open(name, ifstream::in);
-
-    if(!file.good()){
-        return false;
-    }
-
-    int stanumb;
-    file >> stanumb;
-
-    for (int i = 0; i < stanumb; i++){
-        string sname;
-        file >> sname;
-
-        int people;
-        file >> people;
-
-        int x, y;
-        file >> x >> y;
-
-        addStation(sname, people, x, y);
-    }
-
-    int strnumb;
-    file >> strnumb;
-    for (int i = 0; i < strnumb; i++){
-        int toID;
-        file >> toID;
-        int fromID;
-        file >> fromID;
-        int pass;
-        file >> pass;
-
-        addStretch(fromID, toID, pass);
-
-    }
-
-}

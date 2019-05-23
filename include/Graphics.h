@@ -2,17 +2,26 @@
 #define REPO_METRO_GRAPHICS_H
 #include "Station.h"
 #include "Stretch.h"
+#include "Present.h"
 
 #define SIZE 10
 
 
 
-class Graphics{
+class Graphics : public Present{
+private:
+    int mNumber = 0;//number of drawn graphs
 
 public:
 
-    void drawPop(int** population);
-    void drawMetro(vector <Station*> stations, vector <Stretch*> stretches, string name);
+    //using Present::Present;
+    explicit Graphics(Graph* graph): Present(graph){}
+
+
+    void drawPop() override;
+    void drawMetro();
+
+    ~Graphics(){}
 
 };
 

@@ -7,7 +7,9 @@
 
 using namespace svg;
 
-void Graphics::drawPop(int **population) {
+
+
+void Graphics::drawPop() {
 
     Dimensions dimensions(SIZE * 100, SIZE * 100);
     Document doc("population.svg", Layout(dimensions, Layout::TopLeft));
@@ -23,7 +25,7 @@ void Graphics::drawPop(int **population) {
     for(int i=0; i<SIZE; ++i){
         for(int j = 0; j< SIZE; ++j){
             doc << Text(Spoint(((dimensions.width * (j + 0.35) / 10) ), (dimensions.height * (i + 0.65) / 10)),
-                    to_string(population[i][j]), Color::Green, Font(40, "Verdana"));
+                    to_string(mGraph->getArea()->getPopulation()[i][j]), Color::Green, Font(40, "Verdana"));
             lineY << Spoint((dimensions.width * i / 10) , (dimensions.height * j  / 10));
             lineX << Spoint(((dimensions.width * j  / 10) ), (dimensions.height * i  / 10));
 
@@ -43,39 +45,41 @@ void Graphics::drawPop(int **population) {
     doc.save();
 
 }
+//korzystalem z name
+void Graphics::drawMetro(){
 
-void Graphics::drawMetro(vector <Station*> stations, vector <Stretch*> const stretches, string name ){
+    mNumber++;
 
     Dimensions dimensions(SIZE * 100 + 100, SIZE * 100 + 100);
-    Document doc(name + ".svg", Layout(dimensions, Layout::BottomLeft));
+    Document doc("metro" + to_string(mNumber) + ".svg", Layout(dimensions, Layout::BottomLeft));
 
     Polygon border(Stroke(1, Color::Black));
     border << Spoint(0, 0) << Spoint(dimensions.width, 0)
            << Spoint(dimensions.width, dimensions.height) << Spoint(0, dimensions.height);
     doc << border;
 
-    for(int i = 0; i < stretches.size(); i++) {
+    for(auto i: mGraph->getStretches()) {
 
         //a line representing connections between stations
-        doc << (Polyline(Stroke(max(2, min(10, stretches[i]->getPass()/5)), Color::Blue))
-        << Spoint(stretches[i]->getFrom().getPoint().getX() * 100 + 50,
-                stretches[i]->getFrom().getPoint().getY() * 100 + 50)
-                << Spoint(stretches[i]->getTo().getPoint().getX() * 100 + 50,
-                        stretches[i]->getTo().getPoint().getY() * 100 + 50));
+        doc << (Polyline(Stroke(max(2, min(10, i->getPass()/5)), Color::Blue))
+        << Spoint(i->getFrom().getPoint().getX() * 100 + 50,
+                i->getFrom().getPoint().getY() * 100 + 50)
+                << Spoint(i->getTo().getPoint().getX() * 100 + 50,
+                        i->getTo().getPoint().getY() * 100 + 50));
 
         //station's throughput
-        doc << Text(Spoint(((stretches[i]->getFrom().getPoint().getX() * 100 + 50) +
-        stretches[i]->getTo().getPoint().getX() * 100 + 50)/2.0,
-                (((stretches[i]->getFrom().getPoint().getY() * 100 + 50)
-                + stretches[i]->getTo().getPoint().getY() * 100 + 50)/2.0 + 20)), to_string(stretches[i]->getPass()),
+        doc << Text(Spoint(((i->getFrom().getPoint().getX() * 100 + 50) +
+        i->getTo().getPoint().getX() * 100 + 50)/2.0,
+                (((i->getFrom().getPoint().getY() * 100 + 50)
+                + i->getTo().getPoint().getY() * 100 + 50)/2.0 + 20)), to_string(i->getPass()),
                     Color::Brown, Font(20, "Verdana"));
 
     }
 
-    for(int i = 0; i < stations.size(); i++){
+    for(auto i: mGraph->getStations()){
         //stations show as circles
-        doc << Circle(Spoint(stations[i]->getPoint().getX() * 100 + 50, stations[i]->getPoint().getY() * 100 + 50),
-                max(8, min(stations[i]->getPeople()/10, 50)), Fill(Color(255,0,0)), Stroke(1, Color(0, 0, 0)));
+        doc << Circle(Spoint(i->getPoint().getX() * 100 + 50,i->getPoint().getY() * 100 + 50),
+                max(8, min(i->getPeople()/10, 50)), Fill(Color(255,0,0)), Stroke(1, Color(0, 0, 0)));
 
         //string sname(1, stations[i]->getName());
 
@@ -84,12 +88,12 @@ void Graphics::drawMetro(vector <Station*> stations, vector <Stretch*> const str
         //            sname, Color::Black, Font(max(8, min(stations[i]->getPeople()/10, 50)), "Verdana"));
 
         //number of people at the station
-        doc << Text(Spoint(stations[i]->getPoint().getX() * 100 + 65, stations[i]->getPoint().getY() * 100 + 65),
-                to_string(stations[i]->getPeople()), Color::Black, Font(20, "Verdana"));
+        doc << Text(Spoint(i->getPoint().getX() * 100 + 65, i->getPoint().getY() * 100 + 65),
+                to_string(i->getPeople()), Color::Black, Font(20, "Verdana"));
         //station's coordinates
-        doc << Text(Spoint(stations[i]->getPoint().getX() * 100 + 65, stations[i]->getPoint().getY() * 100 + 35),
-                "(" + to_string(stations[i]->getPoint().getX())
-                + ", " + to_string (stations[i]->getPoint().getY()) + ")",
+        doc << Text(Spoint(i->getPoint().getX() * 100 + 65, i->getPoint().getY() * 100 + 35),
+                "(" + to_string(i->getPoint().getX())
+                + ", " + to_string (i->getPoint().getY()) + ")",
                 Color::Black, Font(20, "Verdana"));
     }
 

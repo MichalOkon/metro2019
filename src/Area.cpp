@@ -84,7 +84,6 @@ Area::~Area() {
     for(int i=0; i<mSize; ++i)
             delete[] mPopulation[i];
     delete[] mPopulation;
-    cout << "Area has been destroyed..." << "\n";
 }
 
 void Area::generatePopulation() // O(mSize^3)

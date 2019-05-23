@@ -5,12 +5,12 @@ Stretch::Stretch()
 {
 }
 
-Stretch::Stretch(int id, int pass, Station from, Station to)
+Stretch::Stretch(int id, int pass, Station* from, Station* to)
 {
     mId = id;
     mPass = pass;
-    mFrom = from;
-    mTo = to;
+    mFrom = *from;
+    mTo = *to;
     mTime = sqrt( (mFrom.getPoint().getX() - mTo.getPoint().getX())*(mFrom.getPoint().getX() - mTo.getPoint().getX())
         + (mFrom.getPoint().getY() - mTo.getPoint().getY())*(mFrom.getPoint().getY() - mTo.getPoint().getY()) );
 };

@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include "Graph.h"
+#include "Graphics.h"
 using namespace std;
 
 void stationNamesTest(Graph* city) {
@@ -40,13 +41,13 @@ void stretchesInfoTest(Graph* city) {
         cout << "ID: " << connections[i]->getId() << endl;
         cout << "Z: " << connections[i]->getFrom().getName() << endl;
         cout << "Do: " << connections[i]->getTo().getName() << endl;
-        cout << "Przepustowość: " << connections[i]->getPass() << endl;
+        cout << "Przepustowosc: " << connections[i]->getPass() << endl;
 
     }
     return;
 }
 
-void simulateNDays(Graph* city, int days) {
+void simulateNDays(Graph* city, int days, Graphics& g) {
 
     cout << "SYMULACJA " << days << " DNI:" << endl;
 
@@ -55,6 +56,9 @@ void simulateNDays(Graph* city, int days) {
         city->action();
         city->show();
         cout << endl;
+        g.drawMetro();
+
+
     }
     return;
 }
@@ -63,7 +67,7 @@ void peopleSaveTest(Graph* city) {
     
     Area* map = city->getArea();
 
-    cout << "ZAPIS LUDNOŚCI DO PLIKU: " << endl;
+    cout << "ZAPIS LUDNOSCI DO PLIKU: " << endl;
 
     ofstream toFile;
     toFile.open("testSave.txt");
@@ -92,7 +96,7 @@ void commonAimTest(Graph* city)
 }
 
 
-void allTests(Graph* city)
+/*void allTests(Graph* city)
 {
     stationNamesTest(city);
     cout << endl;
@@ -100,7 +104,7 @@ void allTests(Graph* city)
     cout << endl;
     stretchesInfoTest(city);
     cout << endl;
-    simulateNDays(city, 1);
+    simulateNDays(city, 1, g);
     city->show();
     cout << endl;
-}
+}*/

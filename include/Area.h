@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <array>
+
 #ifndef AREA_H
 #define AREA_H
 #include "Station.h"
@@ -11,6 +13,7 @@ using namespace std;
 
 class Area {
     private:
+        array < array <int, 100>, 100> pop;
         int** mPopulation;
         int mSumOfPeople = 0;
         int mSize = SIZE;
