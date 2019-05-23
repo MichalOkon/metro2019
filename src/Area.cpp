@@ -145,4 +145,8 @@ void Area::populationToStation( vector <Station*> stations ) //Zrobic przejscie 
         for(int j=0; j<mSize; ++j)
             for(int k=1; k<tab[i][j].size(); ++k)
                 (*stations[ tab[i][j][k] ]) += mPopulation[i][j] / (tab[i][j].size()-1);
+
+    for(int i=0; i<mSize; ++i)
+        delete[] tab[i];
+    delete[] tab;
 }
