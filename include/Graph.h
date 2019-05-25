@@ -40,5 +40,7 @@ class Graph
         void action();
         void populationToStation();
         int* Dijkstra(int); //float ???????
+        void saveMetro(string name = "saved.txt");//saves metro map
+        bool loadMetro(string name = "saved.txt");//loads metro map return false if failed
 };
 #endif

@@ -6,19 +6,24 @@
 #include "Station.h"
 #include "Area.h"
 #include "Stretch.h"
+#include "Present.h"
 
 using namespace std;
 
 
-class Display{
+class Display : public Present{
 
 public:
+
+    //using Present::Present;
+    Display(Graph* graph) : Present(graph){}
     //displaying population map
-    void displayPop(int** population);
+    void drawPop();
     //displaying stations and their connections
-    void displayMetro(vector <Station*> stations, vector <Stretch*> stretches);
+    void drawMetro();
     //saving population to file
-    void savePop(int** population);
+    void savePop();
+    ~Display(){}
 };
 
 #endif //REPO_METRO_DISPLAY_H

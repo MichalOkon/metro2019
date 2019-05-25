@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cstdlib>
-#include "../include/Area.h"
-#include "../include/Graph.h"
-#include "../include/Test.h"
-#include "../include/Display.h"
-#include "../include/Graphics.h"
-
+#include "Area.h"
+#include "Graph.h"
+#include "Test.h"
+#include "Display.h"
+#include "Graphics.h"
+#include "SaveAndLoad.h"
 using namespace std;
 
 int main()
@@ -15,27 +15,49 @@ int main()
     int n;
     Graph city(10);
 
-    Display show;
-    Graphics draw;
+    Display show(&city);
+    Graphics draw(&city);
+    SL saver(&city);
 
-    cout << "Hello, world" << endl;
+    bool breakFlag = false;
 
-    cout << "Gimme stations amount: " << endl;
-    cin >> n;
+    while(!breakFlag) {
 
-    for(int i=0; i < n; i++)
-        city.addStation();
+        cout << "Czy chcesz zaladowac metro z pliku? Wpisz 'Y'(tak) lub 'N'(nie)" << endl;
 
-    city.populationToStation();
+        char c;
+        cin >> c;
 
-    cout << "Gimme stretches amount: " << endl;
-    cin >> n;
+        if (c == 'y' || c == 'Y') {
+            if(saver.loadMetro("saved.txt"))
+                breakFlag = true;
+            else
+                cout << "Nie odnaleziono pliku do wczytania" << endl;
+        }
+        else if(c == 'n' || c == 'N') {
+            cout << "Podaj ilosc stacji: " << endl;
+            cin >> n;
 
-    for (int i = 0; i < n; i++)
-        city.addStretch();
+            for (int i = 0; i < n; i++)
+                city.addStation();
 
+            city.populationToStation();
+
+            cout << "Podaj ilosc odcinkow: " << endl;
+            cin >> n;
+
+            for (int i = 0; i < n; i++)
+                city.addStretch();
+
+            breakFlag = true;
+        }
+        else{
+            cout << "Podaj prawidlowy znak!" << endl;
+        }
+
+    }
     char c;
-    bool breakFlag = 0;
+    breakFlag = false;
 
     while (!breakFlag) {
 
@@ -51,6 +73,7 @@ int main()
         cout << "7. Odczytaj ludnosc z pliku\n";
         cout << "8. Narusuj mape ludnosci do pliku\n";
         cout << "9. Rysuj mape metra do pliku" << endl;
+        cout << "10. Zapisz mape metra do pliku" << endl;
 
         cout << "Podaj odpowiednia liczbe: ";
         int request;
@@ -66,16 +89,16 @@ int main()
             break;
         case 3:
             stretchesInfoTest(&city);
-            show.displayMetro(city.getStations(), city.getStretches());
+            show.drawMetro();
             break;
         case 4:
             cout << "Podaj liczbe dni do symulacji: ";
             int days;
             cin >> days;
-            simulateNDays(&city, days);
+            simulateNDays(&city, days, draw);
             break;
         case 5:
-            show.displayPop(city.getArea()->getPopulation());
+            show.drawPop();
             break;
         case 6:
             peopleSaveTest(&city);
@@ -84,11 +107,15 @@ int main()
             peopleRestoreTest(&city);
             break;
         case 8:
-            draw.drawPop(city.getArea()->getPopulation());
+            draw.drawPop();
             break;
         case 9:
-            draw.drawMetro(city.getStations(), city.getStretches(), "City");
+            draw.drawMetro();
             break;
+        case 10:
+            saver.saveMetro("saved.txt");
+            break;
+
         default:
             cout << "Nie wiem co zrobic z twoim zapytaniem..." << endl;
             break;
@@ -98,7 +125,7 @@ int main()
 
         cin >> c;
         if (c == 'N' || c == 'n') {
-            breakFlag = 1;
+            breakFlag = true;
         }
 
     }

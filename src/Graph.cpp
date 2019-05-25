@@ -106,7 +106,7 @@ void Graph::addStretch() //wczytuje parametry wewnatrz
     cin >> sFrom >> sTo >> howMany; ///////////////na razie from i to sa wartosciami mID; TODO: przejscie mName -> mID
 	from = stringToID[sFrom];
     to = stringToID[sTo];
-    Stretch * str = new Stretch(mStretchesAmount++, howMany, *stations[from], *stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
+    Stretch * str = new Stretch(mStretchesAmount++, howMany, stations[from], stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
 	graph[from].push_back(str);
 	graph[to].push_back(str);
 	connections.push_back(str); //tablica polaczen
@@ -114,7 +114,7 @@ void Graph::addStretch() //wczytuje parametry wewnatrz
 
 void Graph::addStretch(int from, int to, int how_many) //przyjmuje parametry z zewnatrz
 {
-    Stretch * str = new Stretch(mStretchesAmount++, how_many, *stations[from], *stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
+    Stretch * str = new Stretch(mStretchesAmount++, how_many, stations[from], stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
 	graph[from].push_back(str);
 	graph[to].push_back(str);
 	connections.push_back(str); //tablica polaczen
@@ -244,3 +244,4 @@ void Graph::show()
         cout << stations[i]->getName() << " " << stations[i]->getPeople() << endl; //valgrind mowi, ze jest blad w getPeople(), a raczej w populationToStation()
     return;
 }
+

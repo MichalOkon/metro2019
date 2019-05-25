@@ -295,61 +295,6 @@ namespace svg
         double radius;
     };
 
-    class Elipse : public Shape
-    {
-    public:
-        Elipse(Spoint const & center, double width, double height,
-               Fill const & fill = Fill(), Stroke const & stroke = Stroke())
-                : Shape(fill, stroke), center(center), radius_width(width / 2),
-                  radius_height(height / 2) { }
-        std::string toString(Layout const & layout) const
-        {
-            std::stringstream ss;
-            ss << elemStart("ellipse") << attribute("cx", translateX(center.x, layout))
-               << attribute("cy", translateY(center.y, layout))
-               << attribute("rx", translateScale(radius_width, layout))
-               << attribute("ry", translateScale(radius_height, layout))
-               << fill.toString(layout) << stroke.toString(layout) << emptyElemEnd();
-            return ss.str();
-        }
-        void offset(Spoint const & offset)
-        {
-            center.x += offset.x;
-            center.y += offset.y;
-        }
-    private:
-        Spoint center;
-        double radius_width;
-        double radius_height;
-    };
-
-    class Rectangle : public Shape
-    {
-    public:
-        Rectangle(Spoint const & edge, double width, double height,
-                  Fill const & fill = Fill(), Stroke const & stroke = Stroke())
-                : Shape(fill, stroke), edge(edge), width(width),
-                  height(height) { }
-        std::string toString(Layout const & layout) const
-        {
-            std::stringstream ss;
-            ss << elemStart("rect") << attribute("x", translateX(edge.x, layout))
-               << attribute("y", translateY(edge.y, layout))
-               << attribute("width", translateScale(width, layout))
-               << attribute("height", translateScale(height, layout))
-               << fill.toString(layout) << stroke.toString(layout) << emptyElemEnd();
-            return ss.str();
-        }
-        void offset(Spoint const & offset)
-        {
-            edge.x += offset.x;
-            edge.y += offset.y;
-        }
-    private:
-        Spoint edge;
-        double width;
-        double height;
-    };
 
     class Line : public Shape
     {
