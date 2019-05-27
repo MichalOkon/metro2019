@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1100px" height="1100px" xmlns="http://www.w3.org/2000/svg" version="1.1" >
+	<polygon points="0,1100 1100,1100 1100,0 0,0 " fill="transparent" stroke-width="1" stroke="rgb(0,0,0)" />
+	<polyline points="50,1050 650,650 " fill="transparent" stroke-width="2" stroke="rgb(0,0,255)" />
+	<text x="350" y="830" fill="rgb(165,42,42)" font-size="20" font-family="Verdana" >3</text>
+	<polyline points="350,750 650,650 " fill="transparent" stroke-width="2" stroke="rgb(0,0,255)" />
+	<text x="500" y="680" fill="rgb(165,42,42)" font-size="20" font-family="Verdana" >2</text>
+	<polyline points="650,650 850,950 " fill="transparent" stroke-width="2" stroke="rgb(0,0,255)" />
+	<text x="750" y="780" fill="rgb(165,42,42)" font-size="20" font-family="Verdana" >13</text>
+	<circle cx="50" cy="1050" r="4" fill="rgb(255,0,0)" stroke-width="1" stroke="rgb(0,0,0)" />
+	<text x="65" y="1035" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >49</text>
+	<text x="65" y="1065" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >(0, 0)</text>
+	<circle cx="350" cy="750" r="13.5" fill="rgb(255,0,0)" stroke-width="1" stroke="rgb(0,0,0)" />
+	<text x="365" y="735" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >273</text>
+	<text x="365" y="765" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >(3, 3)</text>
+	<circle cx="650" cy="650" r="13.5" fill="rgb(255,0,0)" stroke-width="1" stroke="rgb(0,0,0)" />
+	<text x="665" y="635" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >279</text>
+	<text x="665" y="665" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >(6, 4)</text>
+	<circle cx="850" cy="950" r="4" fill="rgb(255,0,0)" stroke-width="1" stroke="rgb(0,0,0)" />
+	<text x="865" y="935" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >67</text>
+	<text x="865" y="965" fill="rgb(0,0,0)" font-size="20" font-family="Verdana" >(8, 1)</text>
+</svg>

@@ -1,7 +1,7 @@
 #include "../include/Graphics.h"
 
 #include "../include/Area.h"
-#include "Simple_svg.hpp"
+#include "../include/Simple_svg.hpp"
 #include <string>
 #include <math.h>
 
@@ -62,23 +62,23 @@ void Graphics::drawMetro(){
 
         //a line representing connections between stations
         doc << (Polyline(Stroke(max(2, min(10, i->getPass()/5)), Color::Blue))
-        << Spoint(i->getFrom().getPoint().getX() * 100 + 50,
-                i->getFrom().getPoint().getY() * 100 + 50)
-                << Spoint(i->getTo().getPoint().getX() * 100 + 50,
-                        i->getTo().getPoint().getY() * 100 + 50));
+        << Spoint(i->getFrom()->getPoint()->getX() * 100 + 50,
+                i->getFrom()->getPoint()->getY() * 100 + 50)
+                << Spoint(i->getTo()->getPoint()->getX() * 100 + 50,
+                        i->getTo()->getPoint()->getY() * 100 + 50));
 
         //station's throughput
-        doc << Text(Spoint(((i->getFrom().getPoint().getX() * 100 + 50) +
-        i->getTo().getPoint().getX() * 100 + 50)/2.0,
-                (((i->getFrom().getPoint().getY() * 100 + 50)
-                + i->getTo().getPoint().getY() * 100 + 50)/2.0 + 20)), to_string(i->getPass()),
+        doc << Text(Spoint(((i->getFrom()->getPoint()->getX() * 100 + 50) +
+        i->getTo()->getPoint()->getX() * 100 + 50)/2.0,
+                (((i->getFrom()->getPoint()->getY() * 100 + 50)
+                + i->getTo()->getPoint()->getY() * 100 + 50)/2.0 + 20)), to_string(i->getPass()),
                     Color::Brown, Font(20, "Verdana"));
 
     }
 
     for(auto i: mGraph->getStations()){
         //stations show as circles
-        doc << Circle(Spoint(i->getPoint().getX() * 100 + 50,i->getPoint().getY() * 100 + 50),
+        doc << Circle(Spoint(i->getPoint()->getX() * 100 + 50,i->getPoint()->getY() * 100 + 50),
                 max(8, min(i->getPeople()/10, 50)), Fill(Color(255,0,0)), Stroke(1, Color(0, 0, 0)));
 
         //string sname(1, stations[i]->getName());
@@ -88,12 +88,12 @@ void Graphics::drawMetro(){
         //            sname, Color::Black, Font(max(8, min(stations[i]->getPeople()/10, 50)), "Verdana"));
 
         //number of people at the station
-        doc << Text(Spoint(i->getPoint().getX() * 100 + 65, i->getPoint().getY() * 100 + 65),
+        doc << Text(Spoint(i->getPoint()->getX() * 100 + 65, i->getPoint()->getY() * 100 + 65),
                 to_string(i->getPeople()), Color::Black, Font(20, "Verdana"));
         //station's coordinates
-        doc << Text(Spoint(i->getPoint().getX() * 100 + 65, i->getPoint().getY() * 100 + 35),
-                "(" + to_string(i->getPoint().getX())
-                + ", " + to_string (i->getPoint().getY()) + ")",
+        doc << Text(Spoint(i->getPoint()->getX() * 100 + 65, i->getPoint()->getY() * 100 + 35),
+                "(" + to_string(i->getPoint()->getX())
+                + ", " + to_string (i->getPoint()->getY()) + ")",
                 Color::Black, Font(20, "Verdana"));
     }
 
