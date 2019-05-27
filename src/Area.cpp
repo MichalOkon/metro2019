@@ -3,8 +3,8 @@
 #include <ctime>
 #include <string> 
 #include <queue>
-#include "Area.h"
-#include "Station.h"
+#include "../include/Area.h"
+#include "../include/Station.h"
 
 
 using namespace std;
@@ -118,7 +118,7 @@ void Area::populationToStation( vector <Station*> stations ) //Zrobic przejscie 
 
     for(int i=0; i<stations.size(); ++i)
     {
-        Q.push( make_pair(stations[i]->getPoint(), i) );
+        Q.push( make_pair(*(stations[i]->getPoint()), i) );
         tab[Q.back().first.getX()][Q.back().first.getY()][0]=1;
         tab[Q.back().first.getX()][Q.back().first.getY()].push_back(i);
     }

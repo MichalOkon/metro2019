@@ -73,18 +73,36 @@ Area* Graph::getArea()
 }
 
 ///////////////////////////////////////////////// adders
+// little bug - if user adds a wrong station, he can't retry in this iteration
+// stations to add : n -> n - 1
 void Graph::addStation() //wczytanie wartosci wewnatrz funkcji
 {
     int id, x, y;
     string name;
     cout << "Podaj nazwe i wspolrzedne stacji" << endl;
     cin >> name >> x >> y;
+
+    bool breakFlag = false;
+
     id = mStationsAmount++;
     Station * newStation = new Station(id,name,0,x,y);
-    vector < Stretch* > v; //tu beda polaczenia tej stacji z innymi
-    graph.push_back(v);
-    stations.push_back(newStation); //do tablicy stacji
-    stringToID.insert( make_pair(name,id) );
+
+    for (int i = 0; i < stations.size(); i++) {
+        if (stations[i]->isSimilar(newStation)) {
+            delete newStation;
+            mStationsAmount--;
+            cout << "Sorry, there is a station of an exact name or in the point you want to create a new one.\n" << endl;
+            breakFlag = true;
+            break;
+        }
+    }
+
+    if (!breakFlag) {
+        vector < Stretch* > v; //tu beda polaczenia tej stacji z innymi
+        graph.push_back(v);
+        stations.push_back(newStation); //do tablicy stacji
+        stringToID.insert( make_pair(name,id) );
+    }
 }
 
 void Graph::addStation(string name, int people, int x, int y)
@@ -107,9 +125,28 @@ void Graph::addStretch() //wczytuje parametry wewnatrz
 	from = stringToID[sFrom];
     to = stringToID[sTo];
     Stretch * str = new Stretch(mStretchesAmount++, howMany, stations[from], stations[to]); //(id_polaczenia, przepustowosc, stacja_a, stacja_b)
-	graph[from].push_back(str);
-	graph[to].push_back(str);
-	connections.push_back(str); //tablica polaczen
+
+    bool breakFlag = false;
+
+    for (int i = 0; i < connections.size(); i++) {
+        if (connections[i]->sameDir(str)) {
+            delete str;
+            mStretchesAmount--;
+            cout << "Nie moge dodac polaczenia, gdyz podobne juz istnieje" << endl;
+            breakFlag = true;
+            break;
+        }
+    }
+
+
+    if (!breakFlag) {
+        graph[from].push_back(str);
+	    graph[to].push_back(str);
+	    connections.push_back(str); //tablica polaczen
+    }
+
+    system("Pause");
+	
 }
 
 void Graph::addStretch(int from, int to, int how_many) //przyjmuje parametry z zewnatrz
@@ -125,23 +162,23 @@ void Graph::DFS(int parent, int u)
 {
 	for(unsigned int i=0; i<graph[u].size(); i++)
 	{
-		if(graph[u][i]->getToorFrom(u).getID() == parent) //zeby sie nie cofac
+		if(graph[u][i]->getToorFrom(u)->getID() == parent) //zeby sie nie cofac
 			continue;
 
-		if(stations[graph[u][i]->getToorFrom(u).getID()]->getPeople() - graph[u][i]->getPass() >= 0)
+		if(stations[graph[u][i]->getToorFrom(u)->getID()]->getPeople() - graph[u][i]->getPass() >= 0)
 		{//jest na stacji jest wiecej ludzi niz przepustowosc
 			int help = stations[u]->getPeople() + graph[u][i]->getPass();
             stations[u]->setPeople(help);
-            help = stations[graph[u][i]->getToorFrom(u).getID()]->getPeople() - graph[u][i]->getPass();
-			stations[graph[u][i]->getToorFrom(u).getID()]->setPeople(help);
+            help = stations[graph[u][i]->getToorFrom(u)->getID()]->getPeople() - graph[u][i]->getPass();
+			stations[graph[u][i]->getToorFrom(u)->getID()]->setPeople(help);
 		}
 		else
 		{//jesli jest mniej niz przepustowosc
-            int help = stations[u]->getPeople() + stations[graph[u][i]->getToorFrom(u).getID()]->getPeople();
+            int help = stations[u]->getPeople() + stations[graph[u][i]->getToorFrom(u)->getID()]->getPeople();
             stations[u]->setPeople(help);
-			stations[graph[u][i]->getToorFrom(u).getID()]->setPeople(0);
+			stations[graph[u][i]->getToorFrom(u)->getID()]->setPeople(0);
 		}
-		DFS(u, graph[u][i]->getToorFrom(u).getID());//schodzimy nizej
+		DFS(u, graph[u][i]->getToorFrom(u)->getID());//schodzimy nizej
 	}
 }
 
@@ -152,23 +189,23 @@ void Graph::DFS2(bool* was, int* dist, int parent, int u, int dest)
     was[u] = true;
 	for(unsigned int i=0; i<graph[u].size(); i++)
 	{
-		if(graph[u][i]->getToorFrom(u).getID() == parent || was[graph[u][i]->getToorFrom(u).getID() ] ) //zeby sie nie cofac
+		if(graph[u][i]->getToorFrom(u)->getID() == parent || was[graph[u][i]->getToorFrom(u)->getID() ] ) //zeby sie nie cofac
 			continue;
 
-        if(dist[u] + graph[u][i]->getTime() == dist[graph[u][i]->getToorFrom(u).getID() ]) //jesli odleglosc bylaby wieksza niz ta wyliczona z Dijkstry to nie ma co sprawdzac
+        if(dist[u] + graph[u][i]->getTime() == dist[graph[u][i]->getToorFrom(u)->getID() ]) //jesli odleglosc bylaby wieksza niz ta wyliczona z Dijkstry to nie ma co sprawdzac
         {
-    		if(stations[graph[u][i]->getToorFrom(u).getID()]->getPeopleToStation(dest) - graph[u][i]->getPass() >= 0)
+    		if(stations[graph[u][i]->getToorFrom(u)->getID()]->getPeopleToStation(dest) - graph[u][i]->getPass() >= 0)
 	    	{//jest na stacji jest wiecej ludzi niz przepustowosc
                 stations[u]->modifyPeopleToStation( dest, graph[u][i]->getPass() );
-                stations[graph[u][i]->getToorFrom(u).getID()]->modifyPeopleToStation( dest, (-1)*graph[u][i]->getPass() );
+                stations[graph[u][i]->getToorFrom(u)->getID()]->modifyPeopleToStation( dest, (-1)*graph[u][i]->getPass() );
 		    }
     		else
 	    	{//jesli jest mniej niz przepustowosc
-                stations[u]->modifyPeopleToStation( dest, stations[graph[u][i]->getToorFrom(u).getID()]->getPeopleToStation(dest) );
-    			stations[graph[u][i]->getToorFrom(u).getID()]->modifyPeopleToStation(dest, (-1)*stations[graph[u][i]->getToorFrom(
-                        u).getID()]->getPeopleToStation(dest));
+                stations[u]->modifyPeopleToStation( dest, stations[graph[u][i]->getToorFrom(u)->getID()]->getPeopleToStation(dest) );
+    			stations[graph[u][i]->getToorFrom(u)->getID()]->modifyPeopleToStation(dest, (-1)*stations[graph[u][i]->getToorFrom(
+                        u)->getID()]->getPeopleToStation(dest));
 	    	}
-            DFS2(was, dist, u, graph[u][i]->getToorFrom(u).getID(), dest);//schodzimy nizej
+            DFS2(was, dist, u, graph[u][i]->getToorFrom(u)->getID(), dest);//schodzimy nizej
         }
     }
 }
@@ -192,8 +229,8 @@ int* Graph::Dijkstra(int statio) //na wikipedii jest dobre wytlumaczenie
             continue;
 
         for(int i=0; i < graph[s].size(); ++i)
-            if( dist[graph[s][i]->getToorFrom(s).getID() ] == INF )
-                Q.push(make_pair( (-1)*(currentDistance + graph[s][i]->getTime()), graph[s][i]->getToorFrom(s).getID() ));
+            if( dist[graph[s][i]->getToorFrom(s)->getID() ] == INF )
+                Q.push(make_pair( (-1)*(currentDistance + graph[s][i]->getTime()), graph[s][i]->getToorFrom(s)->getID() ));
     }
     return dist;
 }

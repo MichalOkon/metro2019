@@ -1,4 +1,4 @@
-#include "Display.h"
+#include "../include/Display.h"
 #define WIDTH 4
 #define WIDTHS 5
 
@@ -26,10 +26,10 @@ void Display::drawMetro() {
 
             bool pom = false;
             for(auto k: mGraph->getStretches()){
-                if((k->getFrom().getID() == (j)->getID() &&
-                        k->getTo().getID() == i->getID())
-                   || (k->getTo().getID() == j->getID() &&
-                       k->getFrom().getID() == i->getID())){
+                if((k->getFrom()->getID() == (j)->getID() &&
+                        k->getTo()->getID() == i->getID())
+                   || (k->getTo()->getID() == j->getID() &&
+                       k->getFrom()->getID() == i->getID())){
 
 
                     cout.width(WIDTHS);

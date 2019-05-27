@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cstdlib>
-#include "Area.h"
-#include "Graph.h"
-#include "Test.h"
-#include "Display.h"
-#include "Graphics.h"
-#include "SaveAndLoad.h"
+#include "../include/Area.h"
+#include "../include/Graph.h"
+#include "../include/Test.h"
+#include "../include/Display.h"
+#include "../include/Graphics.h"
+#include "../include/SaveAndLoad.h"
 using namespace std;
 
 int main()
@@ -13,11 +13,14 @@ int main()
     srand(time(0));
 
     int n;
+    string sN;
     Graph city(10);
 
     Display show(&city);
     Graphics draw(&city);
     SL saver(&city);
+    char c;
+    // breakFlag = false;
 
     bool breakFlag = false;
 
@@ -36,8 +39,19 @@ int main()
         }
         else if(c == 'n' || c == 'N') {
             cout << "Podaj ilosc stacji: " << endl;
-            cin >> n;
 
+            // try {
+            //     cin >> n;
+            //     for (int i = 0; i < n; i++)
+            //     city.addStation();
+            // // } catch (std::exception & ex) {
+            //     //cout << "Other exception" << endl;
+            // } catch (std::invalid_argument const &e) {
+            //     cout << "invalid argument" << endl;
+            // }
+
+            cin >> n;
+ 
             for (int i = 0; i < n; i++)
                 city.addStation();
 
@@ -56,12 +70,12 @@ int main()
         }
 
     }
-    char c;
+
     breakFlag = false;
 
     while (!breakFlag) {
 
-        system("clear");
+        system("cls");
 
         cout << "Co chcesz zrobic:\n";
         cout << "1. Wypisz nazwy\n";
@@ -131,3 +145,4 @@ int main()
     }
     return 0;
 }
+
