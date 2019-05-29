@@ -26,8 +26,8 @@ void stationsInfoTest(Graph* city) {
     for (int i = 0; i < stations.size(); i++) {
         cout << "Nazwa: " << stations[i]->getName() << endl;
         cout << "Liczba ludzi: " << stations[i]->getPeople() << endl;
-        cout << "X: " << stations[i]->getPoint().getX() << endl;
-        cout << "Y: " << stations[i]->getPoint().getY() << endl;
+        cout << "X: " << stations[i]->getPoint()->getX() << endl;
+        cout << "Y: " << stations[i]->getPoint()->getY() << endl;
     }
     return;
 }
@@ -39,8 +39,8 @@ void stretchesInfoTest(Graph* city) {
     for (int i = 0; i < connections.size(); i++) {
 
         cout << "ID: " << connections[i]->getId() << endl;
-        cout << "Z: " << connections[i]->getFrom().getName() << endl;
-        cout << "Do: " << connections[i]->getTo().getName() << endl;
+        cout << "Z: " << connections[i]->getFrom()->getName() << endl;
+        cout << "Do: " << connections[i]->getTo()->getName() << endl;
         cout << "Przepustowosc: " << connections[i]->getPass() << endl;
 
     }

@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cstdlib>
-#include "Area.h"
-#include "Graph.h"
-#include "Test.h"
-#include "Display.h"
-#include "Graphics.h"
-#include "SaveAndLoad.h"
+#include "../include/Area.h"
+#include "../include/Graph.h"
+#include "../include/Test.h"
+#include "../include/Display.h"
+#include "../include/Graphics.h"
+#include "../include/SaveAndLoad.h"
 using namespace std;
 
 int main()
@@ -13,55 +13,100 @@ int main()
     srand(time(0));
 
     int n;
-    Graph city(10);
+    string sN;
+    Graph city(20);
 
     Display show(&city);
     Graphics draw(&city);
     SL saver(&city);
+    char c;
 
+    string wrInp;
+    // breakFlag = false;
     bool breakFlag = false;
 
     while(!breakFlag) {
 
         cout << "Czy chcesz zaladowac metro z pliku? Wpisz 'Y'(tak) lub 'N'(nie)" << endl;
+        
+        cin >> wrInp;
 
-        char c;
-        cin >> c;
 
-        if (c == 'y' || c == 'Y') {
+        // prevent data from imputs like 'yaml' or 'nor' which is YES or NO in your code LATER
+        if (wrInp[0] == 'y' || wrInp[0] == 'Y') {
             if(saver.loadMetro("saved.txt"))
                 breakFlag = true;
             else
                 cout << "Nie odnaleziono pliku do wczytania" << endl;
-        }
-        else if(c == 'n' || c == 'N') {
+        } else if(wrInp[0] == 'n' || wrInp[0] == 'N') {
             cout << "Podaj ilosc stacji: " << endl;
-            cin >> n;
 
-            for (int i = 0; i < n; i++)
-                city.addStation();
+            // try {
+            //     cin >> n;
+            //     for (int i = 0; i < n; i++)
+            //     city.addStation();
+            // // } catch (std::exception & ex) {
+            //     //cout << "Other exception" << endl;
+            // } catch (std::invalid_argument const &e) {
+            //     cout << "invalid argument" << endl;
+            // }
 
-            city.populationToStation();
+            
+            bool statErrFlag = false;
+            while (true) {
+                try {
+                    cin >> sN;
+                    n = std::stoi(sN);
+                } catch (std::exception &ex) {
+                    statErrFlag = true;
+                    cout << "Invalid type of argument (must be integer). Try again..." << endl;
+                    continue;
+                }
+                statErrFlag = false;
+                break;
+            }
+            
+            
+            if (!statErrFlag) {
+                for (int i = 0; i < n; i++)
+                    city.addStation();
+                city.populationToStation();
+            }
+            // city.populationToStation();
 
+            bool strErrFlag = false;
             cout << "Podaj ilosc odcinkow: " << endl;
-            cin >> n;
+            while (true) {
+                try {
+                    cin >> sN;
+                    n = std::stoi(sN);
+                } catch (std::exception &ex) {
+                    strErrFlag = true;
+                    cout << "Invalid type of argument (must be integer). Try again..." << endl;
+                    continue;
+                }
+                strErrFlag = false;
+                break;
+            }
 
-            for (int i = 0; i < n; i++)
-                city.addStretch();
+            if (!strErrFlag) {
+
+                for (int i = 0; i < n; i++)
+                    city.addStretch();
+            }
 
             breakFlag = true;
-        }
-        else{
+        } else {
             cout << "Podaj prawidlowy znak!" << endl;
         }
 
     }
-    char c;
-    breakFlag = false;
 
-    while (!breakFlag) {
+    bool breakActFlag = false;
 
-        system("clear");
+    while (!breakActFlag) {
+
+        system("cls");
 
         cout << "Co chcesz zrobic:\n";
         cout << "1. Wypisz nazwy\n";
@@ -125,9 +170,10 @@ int main()
 
         cin >> c;
         if (c == 'N' || c == 'n') {
-            breakFlag = true;
+            breakActFlag = true;
         }
 
     }
     return 0;
 }
+

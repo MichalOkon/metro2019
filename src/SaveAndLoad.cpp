@@ -2,7 +2,7 @@
 // Created by micha on 22.05.2019.
 //
 
-#include "SaveAndLoad.h"
+#include "../include/SaveAndLoad.h"
 
 void SL::saveMetro(string name){
     ofstream file;
@@ -13,15 +13,15 @@ void SL::saveMetro(string name){
     for(auto i: mGraph->getStations()){
         file << i->getName() << endl;
         file << i->getPeople() << endl;
-        file << i->getPoint().getX() << endl;
-        file << i->getPoint().getY() << endl;
+        file << i->getPoint()->getX() << endl;
+        file << i->getPoint()->getY() << endl;
     }
 
     file << mGraph->getStretches().size() << endl;
 
     for(auto i: mGraph->getStretches()){
-        file << i->getTo().getID() << endl;
-        file << i->getFrom().getID() << endl;
+        file << i->getTo()->getID() << endl;
+        file << i->getFrom()->getID() << endl;
         file << i->getPass() << endl;
     }
 

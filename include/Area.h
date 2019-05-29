@@ -24,6 +24,8 @@ class Area {
         void setTemple(int temple);
         int getSumOfPeople();
         int** getPopulation();
+        int getSize();
+        void setSize(int size);
 
         // Finally useful methods
         // Constructors and Destructors

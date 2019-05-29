@@ -31,6 +31,10 @@ int Point::getY() {
 	return mY;
 }
 
+bool Point::operator==(const Point& p1/*, const Point& p2*/) const {
+	return (this->mX == p1.mX) && (this->mY == p1.mY);
+}
+
 // void Point::setStationIndex(int newStationIndex) {
 //     mStationIndex = newStationIndex;
 // }
