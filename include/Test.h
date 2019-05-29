@@ -6,46 +6,7 @@
 #include "Graphics.h"
 using namespace std;
 
-void stationNamesTest(Graph* city) {
 
-    vector<Station*> stations = city->getStations();
-    
-    cout << "STACJE: " << endl;
-
-    for (int i = 0; i < stations.size(); i++) {
-        cout << stations[i]->getName() << endl;
-    }
-    return;
-}
-
-void stationsInfoTest(Graph* city) {
-
-    vector<Station*> stations = city->getStations();
-
-    cout << "INFORMACJE O STACJACH: " << endl;
-    for (int i = 0; i < stations.size(); i++) {
-        cout << "Nazwa: " << stations[i]->getName() << endl;
-        cout << "Liczba ludzi: " << stations[i]->getPeople() << endl;
-        cout << "X: " << stations[i]->getPoint()->getX() << endl;
-        cout << "Y: " << stations[i]->getPoint()->getY() << endl;
-    }
-    return;
-}
-
-void stretchesInfoTest(Graph* city) {
-    
-    vector<Stretch*> connections = city->getStretches();
-
-    for (int i = 0; i < connections.size(); i++) {
-
-        cout << "ID: " << connections[i]->getId() << endl;
-        cout << "Z: " << connections[i]->getFrom()->getName() << endl;
-        cout << "Do: " << connections[i]->getTo()->getName() << endl;
-        cout << "Przepustowosc: " << connections[i]->getPass() << endl;
-
-    }
-    return;
-}
 
 void simulateNDays(Graph* city, int days, Graphics& g) {
 

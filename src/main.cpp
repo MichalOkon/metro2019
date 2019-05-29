@@ -109,16 +109,15 @@ int main()
         system("cls");
 
         cout << "Co chcesz zrobic:\n";
-        cout << "1. Wypisz nazwy\n";
-        cout << "2. Wypisz informacje o stacjach\n";
-        cout << "3. Wypisz informacje o polaczeniach\n";
-        cout << "4. Symuluj ilosc dni\n";
-        cout << "5. Pokaz rozmieszczenie ludzi\n";
-        cout << "6. Zapisz ludnosc do pliku\n";
-        cout << "7. Odczytaj ludnosc z pliku\n";
-        cout << "8. Narusuj mape ludnosci do pliku\n";
-        cout << "9. Rysuj mape metra do pliku" << endl;
-        cout << "10. Zapisz mape metra do pliku" << endl;
+        cout << "1. Wypisz informacje o stacjach\n";
+        cout << "2. Wypisz informacje o polaczeniach\n";
+        cout << "3. Symuluj ilosc dni\n";
+        cout << "4. Pokaz rozmieszczenie ludzi\n";
+        cout << "5. Zapisz ludnosc do pliku\n";
+        cout << "6. Odczytaj ludnosc z pliku\n";
+        cout << "7. Narusuj mape ludnosci do pliku\n";
+        cout << "8. Rysuj mape metra do pliku" << endl;
+        cout << "9. Zapisz mape metra do pliku" << endl;
 
         cout << "Podaj odpowiednia liczbe: ";
         int request;
@@ -127,37 +126,34 @@ int main()
         switch(request)
         {
         case 1:
-            stationNamesTest(&city);
+            show.stationsInfo();
             break;
         case 2:
-            stationsInfoTest(&city);
-            break;
-        case 3:
-            stretchesInfoTest(&city);
+            show.stretchesInfo();
             show.drawMetro();
             break;
-        case 4:
+        case 3:
             cout << "Podaj liczbe dni do symulacji: ";
             int days;
             cin >> days;
             simulateNDays(&city, days, draw);
             break;
-        case 5:
+        case 4:
             show.drawPop();
             break;
-        case 6:
+        case 5:
             peopleSaveTest(&city);
             break;
-        case 7:
+        case 6:
             peopleRestoreTest(&city);
             break;
-        case 8:
+        case 7:
             draw.drawPop();
             break;
-        case 9:
+        case 8:
             draw.drawMetro();
             break;
-        case 10:
+        case 9:
             saver.saveMetro("saved.txt");
             break;
 

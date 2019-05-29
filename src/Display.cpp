@@ -113,3 +113,34 @@ void Display::savePop(){
 
     file.close();
 }
+
+
+void Display::stationsInfo() {
+
+    vector<Station*> stations = mGraph->getStations();
+
+    cout << "INFORMACJE O STACJACH: " << endl;
+    for (int i = 0; i < stations.size(); i++) {
+        cout << "Nazwa: " << stations[i]->getName() << endl;
+        cout << "Liczba ludzi: " << stations[i]->getPeople() << endl;
+        cout << "X: " << stations[i]->getPoint()->getX() << endl;
+        cout << "Y: " << stations[i]->getPoint()->getY() << endl;
+        cout << "----------------------" << endl;
+    }
+    return;
+}
+
+void Display::stretchesInfo() {
+
+    vector<Stretch*> connections = mGraph->getStretches();
+
+    for (int i = 0; i < connections.size(); i++) {
+
+        cout << "ID: " << connections[i]->getId() << endl;
+        cout << "Z: " << connections[i]->getFrom()->getName() << endl;
+        cout << "Do: " << connections[i]->getTo()->getName() << endl;
+        cout << "Przepustowosc: " << connections[i]->getPass() << endl;
+
+    }
+    return;
+}

@@ -23,6 +23,8 @@ public:
     void drawMetro();
     //saving population to file
     void savePop();
+    void stationsInfo();
+    void stretchesInfo();
     ~Display(){}
 };
 

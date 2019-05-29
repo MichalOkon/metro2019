@@ -5,13 +5,17 @@
 #include <string>
 #include <math.h>
 
+#define WIDTH 100
+
 using namespace svg;
 
 
 
 void Graphics::drawPop() {
 
-    Dimensions dimensions(SIZE * 100, SIZE * 100);
+    int size = mGraph->getArea()->getSize();
+
+    Dimensions dimensions(size * 100, size * 100);
     Document doc("population.svg", Layout(dimensions, Layout::TopLeft));
 
     Polygon border(Stroke(1, Color::Black));
@@ -22,19 +26,19 @@ void Graphics::drawPop() {
     Polyline lineY(Stroke(0.5, Color::Black));
     Polyline lineX(Stroke(0.5, Color::Black));
 
-    for(int i=0; i<SIZE; ++i){
-        for(int j = 0; j< SIZE; ++j){
-            doc << Text(Spoint(((dimensions.width * (j + 0.35) / 10) ), (dimensions.height * (i + 0.65) / 10)),
+    for(int i=0; i<size; ++i){
+        for(int j = 0; j< size; ++j){
+            doc << Text(Spoint(((WIDTH * (j + 0.35) / 10) ), (WIDTH * (i + 0.65) / 10)),
                     to_string(mGraph->getArea()->getPopulation()[i][j]), Color::Green, Font(40, "Verdana"));
-            lineY << Spoint((dimensions.width * i / 10) , (dimensions.height * j  / 10));
-            lineX << Spoint(((dimensions.width * j  / 10) ), (dimensions.height * i  / 10));
+            lineY << Spoint((WIDTH * i / 10) , (WIDTH * j  / 10));
+            lineX << Spoint(((WIDTH * j  / 10) ), (WIDTH * i  / 10));
 
-            if(j + 1 == SIZE){
-                lineY << Spoint((dimensions.width * i  / 10), dimensions.height);
-                lineY << Spoint((dimensions.width * i  / 10), 0);
-                lineY << Spoint((dimensions.width * (i + 1) / 10), 0);
-                lineX << Spoint(dimensions.width, (dimensions.height * i / 10));
-                lineX << Spoint(0,(dimensions.height * i  / 10));
+            if(j + 1 == size){
+                lineY << Spoint((WIDTH * i  / 10), WIDTH);
+                lineY << Spoint((WIDTH * i  / 10), 0);
+                lineY << Spoint((WIDTH * (i + 1) / 10), 0);
+                lineX << Spoint(WIDTH, (WIDTH * i / 10));
+                lineX << Spoint(0,(WIDTH * i  / 10));
             }
         }
     }
@@ -49,8 +53,9 @@ void Graphics::drawPop() {
 void Graphics::drawMetro(){
 
     mNumber++;
+    int size = mGraph->getArea()->getSize();
 
-    Dimensions dimensions(SIZE * 100 + 100, SIZE * 100 + 100);
+    Dimensions dimensions(size * 100 + 100, size * 100 + 100);
     Document doc("metro" + to_string(mNumber) + ".svg", Layout(dimensions, Layout::BottomLeft));
 
     Polygon border(Stroke(1, Color::Black));

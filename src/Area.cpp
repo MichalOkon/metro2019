@@ -50,13 +50,13 @@ int** Area::getPopulation() {
     return mPopulation;
 }
 
-int Area::getTemple() {
-    return mTemple;
-}
+//int Area::getTemple() {
+//    return mTemple;
+//}
 
-void Area::setTemple(int temple) {
-    mTemple = temple;
-}
+//void Area::setTemple(int temple) {
+//mTemple = temple;
+//}
 
 Area::Area() {
     mSize = SIZE;
