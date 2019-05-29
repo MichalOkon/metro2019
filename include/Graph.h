@@ -20,8 +20,10 @@ class Graph
     public:
         Graph();
         Graph(int);
+        Graph(const Graph* copied);
         Graph(int,int);
         ~Graph();
+        void graphStart(int s);
         //void set_stations_amount(int);
         int getStationsAmount();
         //void set_stretches_amount(int);

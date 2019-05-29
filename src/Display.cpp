@@ -127,7 +127,6 @@ void Display::stationsInfo() {
         cout << "Y: " << stations[i]->getPoint()->getY() << endl;
         cout << "----------------------" << endl;
     }
-    return;
 }
 
 void Display::stretchesInfo() {

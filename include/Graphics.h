@@ -18,7 +18,7 @@ public:
     explicit Graphics(Graph* graph): Present(graph){}
 
 
-    void drawPop() override;
+    void drawPop();
     void drawMetro();
 
     ~Graphics(){}

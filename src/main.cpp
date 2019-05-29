@@ -11,14 +11,11 @@ using namespace std;
 int main()
 {
     srand(time(0));
+    Graph city;
 
     int n;
     string sN;
-    Graph city(20);
 
-    Display show(&city);
-    Graphics draw(&city);
-    SL saver(&city);
     char c;
 
     string wrInp;
@@ -34,11 +31,18 @@ int main()
 
         // prevent data from imputs like 'yaml' or 'nor' which is YES or NO in your code LATER
         if (wrInp[0] == 'y' || wrInp[0] == 'Y') {
-            if(saver.loadMetro("saved.txt"))
-                breakFlag = true;
-            else
-                cout << "Nie odnaleziono pliku do wczytania" << endl;
+            SL::loadMetro("saved.txt", &city);
+            breakFlag = true;
+
+
         } else if(wrInp[0] == 'n' || wrInp[0] == 'N') {
+
+            cout << "Podaj wielkosc miasta:" << endl;
+            int w;
+            cin >> w;
+            city.graphStart(w);
+
+
             cout << "Podaj ilosc stacji: " << endl;
 
             // try {
@@ -101,6 +105,9 @@ int main()
         }
 
     }
+    static Display show(&city);
+    static Graphics draw(&city);
+    static SL saver(&city);
 
     bool breakActFlag = false;
 

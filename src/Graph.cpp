@@ -16,10 +16,21 @@ using namespace std;
 map <string, int> stringToID;
 
 /////////////////////////////////  constructors
+Graph::Graph() {}
+
 Graph::Graph(int s) //generuje Area o rozmiarze s X s
 {
     city = new Area(s);
     //city->generatePopulation();
+}
+
+Graph::Graph(const Graph* copied){
+    graph = copied->graph;
+    stations = copied->stations;
+    connections = copied->connections;
+    city = copied->city;
+    mStationsAmount = copied->mStationsAmount;
+    mStretchesAmount = copied->mStretchesAmount;
 }
 
 Graph::Graph(int statio, int stret)
@@ -46,6 +57,11 @@ Graph::~Graph()
     connections.clear();
     if( city != nullptr )
         delete city;
+}
+void Graph::graphStart(int s) //generuje Area o rozmiarze s X s
+{
+    city = new Area(s);
+    //city->generatePopulation();
 }
 
 ////////////////////////////////////////////// getters

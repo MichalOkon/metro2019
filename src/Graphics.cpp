@@ -28,17 +28,17 @@ void Graphics::drawPop() {
 
     for(int i=0; i<size; ++i){
         for(int j = 0; j< size; ++j){
-            doc << Text(Spoint(((WIDTH * (j + 0.35) / 10) ), (WIDTH * (i + 0.65) / 10)),
+            doc << Text(Spoint(((WIDTH * (j + 0.35) ) ), (WIDTH * (i + 0.65))),
                     to_string(mGraph->getArea()->getPopulation()[i][j]), Color::Green, Font(40, "Verdana"));
-            lineY << Spoint((WIDTH * i / 10) , (WIDTH * j  / 10));
-            lineX << Spoint(((WIDTH * j  / 10) ), (WIDTH * i  / 10));
+            lineY << Spoint((WIDTH * i) , (WIDTH * j ));
+            lineX << Spoint(((WIDTH * j) ), (WIDTH * i ));
 
             if(j + 1 == size){
-                lineY << Spoint((WIDTH * i  / 10), WIDTH);
-                lineY << Spoint((WIDTH * i  / 10), 0);
-                lineY << Spoint((WIDTH * (i + 1) / 10), 0);
-                lineX << Spoint(WIDTH, (WIDTH * i / 10));
-                lineX << Spoint(0,(WIDTH * i  / 10));
+                lineY << Spoint((WIDTH * i), WIDTH * (j + 1));
+                lineY << Spoint((WIDTH * i), 0);
+                lineY << Spoint((WIDTH * (i + 1)), 0);
+                lineX << Spoint((WIDTH*(j+1)), (WIDTH * i));
+                lineX << Spoint(0,(WIDTH * i ));
             }
         }
     }

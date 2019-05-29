@@ -4,10 +4,12 @@
 
 #include "../include/SaveAndLoad.h"
 
+
 void SL::saveMetro(string name){
     ofstream file;
     file.open(name, ofstream::out);
 
+    file << mGraph->getArea()->getSize() << endl;
     file << mGraph->getStations().size() << endl;
 
     for(auto i: mGraph->getStations()){
@@ -28,16 +30,20 @@ void SL::saveMetro(string name){
 }
 
 
-bool SL::loadMetro(string name){
+void SL::loadMetro(string name, Graph* graph){
     ifstream file;
     file.open(name, ifstream::in);
 
     if(!file.good()){
-        return false;
+        abort();
     }
 
+    int asize;
     int stanumb;
-    file >> stanumb;
+    file >> asize;
+    file >>stanumb;
+
+    graph->graphStart(asize);
 
     for (int i = 0; i < stanumb; i++){
         string sname;
@@ -49,7 +55,7 @@ bool SL::loadMetro(string name){
         int x, y;
         file >> x >> y;
 
-        mGraph->addStation(sname, people, x, y);
+        graph->addStation(sname, people, x, y);
     }
 
     int strnumb;
@@ -62,9 +68,8 @@ bool SL::loadMetro(string name){
         int pass;
         file >> pass;
 
-        mGraph->addStretch(fromID, toID, pass);
+        graph->addStretch(fromID, toID, pass);
 
     }
-    return true;
 
 }
