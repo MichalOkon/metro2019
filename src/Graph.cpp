@@ -184,6 +184,7 @@ void Graph::addStretch() //wczytuje parametry wewnatrz
 
             cout << "Podaj skad, dokad i jaka przepustowosc" << endl;
             cin >> sFrom >> sTo >> sHowMany;
+            howMany = std::stoi(sHowMany);
 
             if (!stExists(sFrom) || !stExists(sTo)) {
                 throw "At least one of the stations do not exist. Try again...";

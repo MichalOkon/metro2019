@@ -5,7 +5,7 @@
 #include "../include/SaveAndLoad.h"
 
 
-void SL::saveMetro(string name){
+void SL::saveMetro(const string& name){
     ofstream file;
     file.open(name, ofstream::out);
 

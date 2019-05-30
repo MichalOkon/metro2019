@@ -12,7 +12,7 @@ public:
 
     explicit SL(Graph* graph) : mGraph(graph){}
 
-    void saveMetro(string name); //saves metro
+    void saveMetro(const string& name); //saves metro
     static void loadMetro(string name, Graph* graph); //loads saved metro
     void savePop(const string& name  = "savedpop.txt"); // saves population
     void loadPop(const string& name  = "savedpop.txt");
