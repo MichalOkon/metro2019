@@ -77,7 +77,7 @@ void Display::drawPop() {
 /////////////////////wzorzec obserwator
 ////////////dodatkowe klasy design
 
-void Display::savePop(){
+/*void Display::savePop(){
 
     int size = mGraph->getArea()->getSize();
 
@@ -113,7 +113,7 @@ void Display::savePop(){
 
     file.close();
 }
-
+*/
 
 void Display::stationsInfo() {
 

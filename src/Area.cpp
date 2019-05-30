@@ -157,3 +157,7 @@ void Area::populationToStation( vector <Station*> stations ) //Zrobic przejscie 
         delete[] tab[i];
     delete[] tab;
 }
+
+void Area::setPop(int i,int j, int value){
+    mPopulation[i][j] = value;
+}

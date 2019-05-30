@@ -72,4 +72,36 @@ void SL::loadMetro(string name, Graph* graph){
 
     }
 
+    file.close();
+
+}
+
+void SL::savePop(const string& name){
+
+    ofstream file;
+    file.open(name, ofstream::out);
+
+    for(int i = 0; i<mGraph->getArea()->getSize(); i++){
+        for (int j = 0; j < mGraph->getArea()->getSize(); j++)
+            file << mGraph->getArea()->getPopulation()[i][j] << endl;
+    }
+
+    file.close();
+}
+
+void SL::loadPop(const string &name) {
+
+    ifstream file;
+    file.open(name, ifstream::in);
+
+    for(int i = 0; i<mGraph->getArea()->getSize(); i++) {
+        for (int j = 0; j < mGraph->getArea()->getSize(); j++) {
+            int value;
+            file >> value;
+            mGraph->getArea()->setPop(i, j, value);
+        }
+    }
+    file.close();
+
+    mGraph->populationToStation();
 }

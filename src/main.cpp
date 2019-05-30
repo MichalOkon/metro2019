@@ -12,6 +12,9 @@ int main()
 {
     srand(time(0));
     Graph city;
+    Display show(&city);
+    Graphics draw(&city);
+    SL saver(&city);
 
     int n;
     string sN;
@@ -32,6 +35,7 @@ int main()
         // prevent data from imputs like 'yaml' or 'nor' which is YES or NO in your code LATER
         if (wrInp[0] == 'y' || wrInp[0] == 'Y') {
             SL::loadMetro("saved.txt", &city);
+            saver.loadPop();
             breakFlag = true;
 
 
@@ -105,9 +109,7 @@ int main()
         }
 
     }
-    static Display show(&city);
-    static Graphics draw(&city);
-    static SL saver(&city);
+
 
     bool breakActFlag = false;
 
@@ -149,10 +151,10 @@ int main()
             show.drawPop();
             break;
         case 5:
-            peopleSaveTest(&city);
+            saver.savePop("individual_save.txt");
             break;
         case 6:
-            peopleRestoreTest(&city);
+            saver.loadPop("individual_save.txt");
             break;
         case 7:
             draw.drawPop();
@@ -162,6 +164,7 @@ int main()
             break;
         case 9:
             saver.saveMetro("saved.txt");
+            saver.savePop();
             break;
 
         default:

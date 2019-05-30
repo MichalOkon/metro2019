@@ -26,6 +26,7 @@ class Area {
         int** getPopulation();
         int getSize();
         void setSize(int size);
+        void setPop(int i,int j, int value);
 
         // Finally useful methods
         // Constructors and Destructors

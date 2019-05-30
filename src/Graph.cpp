@@ -4,10 +4,9 @@
 #include <string>
 #include <cstring>
 #include <map>
-#include "../include/Graph.h"
-#include "../include/Station.h"
-#include "../include/Stretch.h"
-#include "../include/Area.h"
+#include "Graph.h"
+
+
 #define INF 1000000000 //10^9
 #define SIZE 10
 
@@ -117,7 +116,7 @@ void Graph::addStation() //wczytanie wartosci wewnatrz funkcji
             x = stoi(sX);
             y = stoi(sY);
 
-            if ((x < 0 || x >= SIZE) || (y < 0 || y >= SIZE)) {
+            if ((x < 0 || x >= getArea()->getSize()) || (y < 0 || y >= getArea()->getSize())) {
                 throw "Index out of range.";
             }
 
@@ -351,7 +350,7 @@ void Graph::populationToStation()
     vector <float> ratio; //przechowuje ulamki ile % ludzi chce dotrzec do stacji 'i' -> ratio[i]
     for(int i=0; i<stations.size(); ++i)
     {
-        ratio.push_back( ((float)stations[i]->getPeople() / sum) ); ////// TODO: opracowac lepszy podzial ludzi
+        ratio.push_back( ((float)stations[i]->getPeople() / sum) );
     }
     for(int i=0; i<stations.size(); ++i)
         stations[i]->setPeopleToStation( &ratio ); //daje tablice ulamkow do metody, ona tam mnozy razy ilosc ludzi i zapisuje w station
@@ -380,4 +379,3 @@ void Graph::show()
         cout << stations[i]->getName() << " " << stations[i]->getPeople() << endl; //valgrind mowi, ze jest blad w getPeople(), a raczej w populationToStation()
     return;
 }
-
