@@ -14,12 +14,14 @@ public:
     void setId(int val);
     int getPass();
     void setPass(int val);
-    Station getFrom();
-    Station getTo();
-    void setFrom(Station val);
-    Station getToorFrom(int fromm = 0);
-    void setTo(Station val);
+    Station* getFrom();
+    Station* getTo();
+    void setFrom(Station* val);
+    Station* getToorFrom(int fromm = 0);
+    void setTo(Station* val);
     int getTime(); // float ??????? 
+
+    bool sameDir(Stretch * str);
 
 protected:
 
@@ -28,8 +30,8 @@ private:
     //maximum number of passengers transported at the same time
     int mPass; //przepustowosc
     int mTime; //czas podrozy -> odleglosc miedzy stacja mFrom i mTo; int czy float??????
-    Station mFrom;
-    Station mTo;
+    Station* mFrom;
+    Station* mTo;
 };
 
 #endif // STRETCH_H

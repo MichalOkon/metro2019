@@ -13,13 +13,13 @@ class Station
     private:
         int mID;
         int mPeople;
-        Point mPoint;
+        Point * mPoint;
         string mName;
         vector <int> peopleToStation; //peopleToStation[i] zwraca ile ludzi chce z tej stacji do stacji 'i'
 
     public:
         Station();
-        Station(int ID, string name, int people, Point point);
+        Station(int ID, string name, int people, Point* point);
         Station(int ID, string name, int people, int newX, int newY);
         ~Station();
 
@@ -31,14 +31,16 @@ class Station
         void setPeople(int newPeople);
         int getPeople();
 
-        void setPoint(Point newPoint);
+        void setPoint(Point * newPoint);
         void setPoint(int newX, int newY);
-        Point getPoint();
+        Point* getPoint();
 
         void setPeopleToStation( vector<float>* );
         int getPeopleToStation(int);
         void modifyPeopleToStation(int, int);
         void updatePeople();
+        bool isSimilar(Station* s2);
+        bool operator==(Station& s1) const;
 
         void operator+=(int); //zwieksza mPeople o int
         void operator-=(int); //zmniejsza mPeople o int

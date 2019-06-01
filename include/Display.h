@@ -22,7 +22,9 @@ public:
     //displaying stations and their connections
     void drawMetro();
     //saving population to file
-    void savePop();
+    //void savePop();
+    void stationsInfo();
+    void stretchesInfo();
     ~Display(){}
 };
 

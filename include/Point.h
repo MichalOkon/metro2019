@@ -19,6 +19,8 @@ class Point
 		void setY(int newY);
 		int getY();
 
+		bool operator==(const Point& p1/*, const Point& p2*/) const;
+
         // void setStationIndex(int stationIndex);
 		//int getStationIndex();
 

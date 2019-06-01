@@ -20,8 +20,10 @@ class Graph
     public:
         Graph();
         Graph(int);
+        Graph(const Graph* copied);
         Graph(int,int);
         ~Graph();
+        void graphStart(int s);
         //void set_stations_amount(int);
         int getStationsAmount();
         //void set_stretches_amount(int);
@@ -42,5 +44,6 @@ class Graph
         int* Dijkstra(int); //float ???????
         void saveMetro(string name = "saved.txt");//saves metro map
         bool loadMetro(string name = "saved.txt");//loads metro map return false if failed
+        bool stExists(std::string sName);
 };
 #endif

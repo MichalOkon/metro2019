@@ -1,4 +1,4 @@
-#include "Display.h"
+#include "../include/Display.h"
 #define WIDTH 4
 #define WIDTHS 5
 
@@ -26,10 +26,10 @@ void Display::drawMetro() {
 
             bool pom = false;
             for(auto k: mGraph->getStretches()){
-                if((k->getFrom().getID() == (j)->getID() &&
-                        k->getTo().getID() == i->getID())
-                   || (k->getTo().getID() == j->getID() &&
-                       k->getFrom().getID() == i->getID())){
+                if((k->getFrom()->getID() == (j)->getID() &&
+                        k->getTo()->getID() == i->getID())
+                   || (k->getTo()->getID() == j->getID() &&
+                       k->getFrom()->getID() == i->getID())){
 
 
                     cout.width(WIDTHS);
@@ -48,16 +48,16 @@ void Display::drawMetro() {
     }
 }
 
-
 void Display::drawPop() {
 
+    int size = mGraph->getArea()->getSize();
     cout << endl;
 
-    for(int i = 0; i < SIZE; i++){
+    for(int i = 0; i < size ; i++){ // here was SIZE
 
         cout << "|";
 
-        for (int j = 0; j < SIZE; j++){
+        for (int j = 0; j < size; j++){ // here was SIZE
             cout.width(WIDTH);
             cout << mGraph->getArea()->getPopulation()[i][j] ;
             cout << "|";
@@ -66,7 +66,7 @@ void Display::drawPop() {
 
         cout << endl;
 
-        for(int a = 0; a < (WIDTH+1)*SIZE + 1; a++){
+        for(int a = 0; a < (WIDTH+1)*size + 1; a++){
             cout << "-";
         }
 
@@ -77,23 +77,25 @@ void Display::drawPop() {
 /////////////////////wzorzec obserwator
 ////////////dodatkowe klasy design
 
-void Display::savePop(){
+/*void Display::savePop(){
+
+    int size = mGraph->getArea()->getSize();
 
     ofstream file;
 
     file.open("population.txt", ofstream::out);
 
-    for(int a = 0; a < (WIDTH+1)*SIZE + 1; a++){
+    for(int a = 0; a < (WIDTH+1)*size + 1; a++){
         file << "-";
     }
 
     file << endl;
 
-    for(int i = 0; i < SIZE; i++){
+    for(int i = 0; i < size; i++){
 
         file << "|";
 
-        for (int j = 0; j < SIZE; j++){
+        for (int j = 0; j < size; j++){
             file.width(WIDTH);
             file << mGraph->getArea()->getPopulation()[i][j] ;
             file << "|";
@@ -102,7 +104,7 @@ void Display::savePop(){
 
         file << endl;
 
-        for(int a = 0; a < (WIDTH+1)*SIZE + 1; a++){
+        for(int a = 0; a < (WIDTH+1)*size + 1; a++){
             file << "-";
         }
 
@@ -110,4 +112,34 @@ void Display::savePop(){
     }
 
     file.close();
+}
+*/
+
+void Display::stationsInfo() {
+
+    vector<Station*> stations = mGraph->getStations();
+
+    cout << "INFORMACJE O STACJACH: " << endl;
+    for (int i = 0; i < stations.size(); i++) {
+        cout << "Nazwa: " << stations[i]->getName() << endl;
+        cout << "Liczba ludzi: " << stations[i]->getPeople() << endl;
+        cout << "X: " << stations[i]->getPoint()->getX() << endl;
+        cout << "Y: " << stations[i]->getPoint()->getY() << endl;
+        cout << "----------------------" << endl;
+    }
+}
+
+void Display::stretchesInfo() {
+
+    vector<Stretch*> connections = mGraph->getStretches();
+
+    for (int i = 0; i < connections.size(); i++) {
+
+        cout << "ID: " << connections[i]->getId() << endl;
+        cout << "Z: " << connections[i]->getFrom()->getName() << endl;
+        cout << "Do: " << connections[i]->getTo()->getName() << endl;
+        cout << "Przepustowosc: " << connections[i]->getPass() << endl;
+
+    }
+    return;
 }

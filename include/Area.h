@@ -20,10 +20,13 @@ class Area {
     public:
 
         // Getters and Setters
-        int getTemple();
-        void setTemple(int temple);
+        //int getTemple();
+        //void setTemple(int temple);
         int getSumOfPeople();
         int** getPopulation();
+        int getSize();
+        void setSize(int size);
+        void setPop(int i,int j, int value);
 
         // Finally useful methods
         // Constructors and Destructors
