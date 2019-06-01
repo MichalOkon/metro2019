@@ -15,6 +15,15 @@ Stretch::Stretch(int id, int pass, Station from, Station to)
         + (mFrom.getPoint().getY() - mTo.getPoint().getY())*(mFrom.getPoint().getY() - mTo.getPoint().getY()) );
 };
 
+Stretch::Stretch( Stretch* s )
+{
+    mId = s->getId();
+    mPass = s->getPass();
+    mFrom = s->getFrom();
+    mTo = s->getTo();
+    mTime = s->getTime();
+}
+
 Stretch::~Stretch()
 {
     
@@ -76,7 +85,7 @@ int Stretch::getTime()
 }
 
 ostream &operator<<(ostream &os, const Stretch &stretch) {
-    os << "mPass: " << stretch.mPass << " mFrom: " << stretch.mFrom << " mTo: " << stretch.mTo;
+    os << " From: " << stretch.mFrom << " To: " << stretch.mTo << "Pass: " << stretch.mPass;
     return os;
 }
 

@@ -8,6 +8,7 @@ class Stretch
 {
 public:
     Stretch();
+    Stretch( Stretch* s );
     Stretch(int id, int pass, Station from, Station to); //nazwa, przepustowosc i skad dokad
     ~Stretch();
 

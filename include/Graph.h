@@ -20,6 +20,7 @@ class Graph
 
     public:
         Graph();
+        //Graph( Graph g );
         Graph(int);
         Graph(int,int);
         ~Graph();
@@ -27,6 +28,16 @@ class Graph
         int getStationsAmount();
         //void set_stretches_amount(int);
         int getStretchesAmount();
+
+        int GraphLen1();
+        int GraphLen2(int j);
+        int StationsLen();
+        int ConnectionsLen();
+
+        void printGraphElem(int j, int k);
+        void printStationsElem(int j);
+        void printConnectionsElem(int j);
+
         Area* getArea();
         void addStation();
         void addStation(string, int, int, int);
@@ -42,7 +53,7 @@ class Graph
         void populationToStation();
         int* Dijkstra(int);
 
-    friend ostream &operator<<(ostream &os, const Graph &graph);
+
     //float ???????
 };
 #endif

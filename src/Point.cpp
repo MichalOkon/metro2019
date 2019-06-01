@@ -39,3 +39,7 @@ int Point::getY() {
 //     return mStationIndex;
 // }
 
+std::ostream &operator<<(std::ostream &os, const Point &point) {
+	os << "X: " << point.mX << " Y: " << point.mY;
+	return os;
+}

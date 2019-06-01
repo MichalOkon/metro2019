@@ -22,7 +22,8 @@ public:
 
     void addDay(Graph* g);
 
-    friend ostream &operator<<(ostream &os, const Statistics &statistics);
+    void PrintMe();
+    void showGraph();
 
 };
 

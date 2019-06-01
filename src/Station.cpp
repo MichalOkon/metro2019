@@ -25,6 +25,14 @@ Station::Station(int id, string name, int people, int x, int y)
     mPoint = Point(x,y);
 }
 
+Station::Station(Station *s)
+{
+    mID = s->getID();
+    mName = s->getName();
+    mPeople = s->getPeople();
+    mPoint = s->getPoint();
+}
+
 Station::~Station()
 {
     peopleToStation.clear();
@@ -113,6 +121,6 @@ void Station::updatePeople()
 }
 
 ostream &operator<<(ostream &os, const Station &station) {
-    os << "mID: " << station.mID << " mPeople: " << station.mPeople << " mName: " << station.mName;
+    os << " Name: " << station.mName << " People: " << station.mPeople;
     return os;
 }

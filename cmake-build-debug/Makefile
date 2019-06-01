@@ -393,6 +393,60 @@ src/test.cpp.s:
 	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/src/test.cpp.s
 .PHONY : src/test.cpp.s
 
+tests/test_main.o: tests/test_main.cpp.o
+
+.PHONY : tests/test_main.o
+
+# target to build an object file
+tests/test_main.cpp.o:
+	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/tests/test_main.cpp.o
+.PHONY : tests/test_main.cpp.o
+
+tests/test_main.i: tests/test_main.cpp.i
+
+.PHONY : tests/test_main.i
+
+# target to preprocess a source file
+tests/test_main.cpp.i:
+	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/tests/test_main.cpp.i
+.PHONY : tests/test_main.cpp.i
+
+tests/test_main.s: tests/test_main.cpp.s
+
+.PHONY : tests/test_main.s
+
+# target to generate assembly for a file
+tests/test_main.cpp.s:
+	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/tests/test_main.cpp.s
+.PHONY : tests/test_main.cpp.s
+
+tests/test_scenario.o: tests/test_scenario.cpp.o
+
+.PHONY : tests/test_scenario.o
+
+# target to build an object file
+tests/test_scenario.cpp.o:
+	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/tests/test_scenario.cpp.o
+.PHONY : tests/test_scenario.cpp.o
+
+tests/test_scenario.i: tests/test_scenario.cpp.i
+
+.PHONY : tests/test_scenario.i
+
+# target to preprocess a source file
+tests/test_scenario.cpp.i:
+	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/tests/test_scenario.cpp.i
+.PHONY : tests/test_scenario.cpp.i
+
+tests/test_scenario.s: tests/test_scenario.cpp.s
+
+.PHONY : tests/test_scenario.s
+
+# target to generate assembly for a file
+tests/test_scenario.cpp.s:
+	$(MAKE) -f CMakeFiles/metro2019.dir/build.make CMakeFiles/metro2019.dir/tests/test_scenario.cpp.s
+.PHONY : tests/test_scenario.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -432,6 +486,12 @@ help:
 	@echo "... src/test.o"
 	@echo "... src/test.i"
 	@echo "... src/test.s"
+	@echo "... tests/test_main.o"
+	@echo "... tests/test_main.i"
+	@echo "... tests/test_main.s"
+	@echo "... tests/test_scenario.o"
+	@echo "... tests/test_scenario.i"
+	@echo "... tests/test_scenario.s"
 .PHONY : help
 
 

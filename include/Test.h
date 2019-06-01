@@ -51,10 +51,7 @@ void stretchesInfoTest(Graph* city) {
 Statistics* simulateNDays(Graph* city, int days) {
 
     cout << "SYMULACJA " << days << " DNI:" << endl;
-    /*
-     * xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-     *
-     */
+
     Statistics* stat = new Statistics();
 
     for (int i = 0; i < days; i++) {

@@ -46,6 +46,38 @@ Graph::~Graph()
         delete city;
 }
 
+Graph::Graph( Graph g )
+{
+
+    for(int j = 0; j < g.GraphLen1(); j++)
+    {
+        //graph[j].push_back(new vector(nullptr));xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+        for(int k = 0; k < g.GraphLen2(j); k++)
+        {//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//            Stretch* s = new Stretch( g );
+//            graph[k].push_back( s );
+        }
+    }
+    cout<<endl;
+
+    for(int j = 0; j < g.StationsLen(); j++)
+    {
+        Station st = new Station( g.stations[j] );
+        stations.push_back(st);
+        //cout<<" b ";
+    }
+    cout<<endl;
+
+    for(int j = 0; j < g.ConnectionsLen(); j++)
+    {
+        Stretch* str = new Stretch(g.connections[j]);
+        //cout<<" c ";
+    }
+    cout<<endl;
+    cout<<endl;
+}
+
 ////////////////////////////////////////////// getters
 vector < Station* >  Graph::getStations()
 {
@@ -245,7 +277,37 @@ void Graph::show()
     return;
 }
 
-ostream &operator<<(ostream &os, const Graph &graph) {
-    os /*<< "graph: " << graph.graph*/ << " stations: " << graph.stations << " connections: " << graph.connections;
-    return os;
+int Graph::GraphLen1()
+{
+    return graph.size();
+}
+
+int Graph::GraphLen2(int j)
+{
+    return graph[j].size();
+}
+
+int Graph::StationsLen()
+{
+    return stations.size();
+}
+
+int Graph::ConnectionsLen()
+{
+return connections.size();
+}
+
+void Graph::printGraphElem(int j, int k)
+{
+    cout << *graph[j][k];
+}
+
+void Graph::printStationsElem(int j)
+{
+    cout << *stations[j];
+}
+
+void Graph::printConnectionsElem(int j)
+{
+    cout << *connections[j];
 }

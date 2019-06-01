@@ -1,5 +1,3 @@
+//#define CATCH_CONFIG_MAIN
 //
-// Created by zsantorowska on 19.05.19.
-//
-
-#include "test_main.h"
+//#include "lib/catch.hpp"

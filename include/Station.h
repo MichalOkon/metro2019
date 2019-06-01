@@ -22,6 +22,7 @@ class Station
         Station();
         Station(int ID, string name, int people, Point point);
         Station(int ID, string name, int people, int newX, int newY);
+        Station(Station *s);
         ~Station();
 
         int getID();

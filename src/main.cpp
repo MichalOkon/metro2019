@@ -7,10 +7,34 @@
 #include "Graphics.h"
 #include "Statistics.h"
 
-//using namespace std;
-//
-//int main()
-//{
+
+using namespace std;
+
+int main()
+{
+
+  cout<<"hej";
+    vector<vector<Stretch*>> a /*= new vector<vector<Stretch*>>()*/;
+    cout<<"hej2";
+    vector<Stretch*> x /*= new vector(nullptr)*/;
+    cout<<"hej3";
+    a.push_back(x);
+    cout<<"hej4";
+    string o = "A";
+    cout<<"hej5";
+    string h = "B";
+    cout<<"hej6";
+    Station* A = new Station(0,o,30,5,6);
+    cout<<"hej7";
+    Station* B = new Station(1,h,35,7,8);
+    cout<<"hej8";
+//    Stretch* b = new Stretch(2, 3,*A,*B);
+//    cout<<"hej9";
+//    a[1].push_back(b);
+//    cout<<"hej10";
+//    cout<< "a[ "<<"x ""b: id:"<<b->getId()<<" pass:"<< b->getPass()<<" from:"<<b->getFrom()<<" to:"<<b->getTo()<<" ]"" ]";
+
+
 //    srand(time(0));
 //
 //    int n;
@@ -74,7 +98,8 @@
 //            int days;
 //            cin >> days;
 //            Statistics *stat = simulateNDays(&city, days);
-//            cout << stat << endl;
+//            stat->showGraph();
+//            //stat->PrintMe();
 //            break;
 //        }
 //        case 5:
@@ -106,4 +131,4 @@
 //
 //    }
 //    return 0;
-//}
+}

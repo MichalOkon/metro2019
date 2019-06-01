@@ -2,6 +2,8 @@
 #define POINT_H
 
 
+#include <ostream>
+
 class Point
 
 {
@@ -19,7 +21,9 @@ class Point
 		void setY(int newY);
 		int getY();
 
-        // void setStationIndex(int stationIndex);
+	friend std::ostream &operator<<(std::ostream &os, const Point &point);
+
+	// void setStationIndex(int stationIndex);
 		//int getStationIndex();
 
 	protected:
