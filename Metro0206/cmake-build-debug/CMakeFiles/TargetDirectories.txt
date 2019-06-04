@@ -1,0 +1,3 @@
+/home/zsantorowska/CLionProjects/project/metro2019/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/zsantorowska/CLionProjects/project/metro2019/cmake-build-debug/CMakeFiles/metro2019.dir
+/home/zsantorowska/CLionProjects/project/metro2019/cmake-build-debug/CMakeFiles/edit_cache.dir
